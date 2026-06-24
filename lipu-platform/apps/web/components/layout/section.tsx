@@ -34,7 +34,7 @@ export function Section({ children, className, id, dark = false }: SectionProps)
     <section
       id={id}
       className={cn(
-        'py-16 sm:py-20 lg:py-28',
+        'py-20 sm:py-24 lg:py-32',
         dark && 'bg-stone-925 text-stone-50',
         className,
       )}
@@ -50,11 +50,12 @@ interface SectionHeaderProps {
   description?: string;
   align?: 'left' | 'center';
   light?: boolean;
+  className?: string;
 }
 
-export function SectionHeader({ eyebrow, title, description, align = 'left', light = false }: SectionHeaderProps) {
+export function SectionHeader({ eyebrow, title, description, align = 'left', light = false, className }: SectionHeaderProps) {
   return (
-    <div className={cn('mb-12 max-w-3xl', align === 'center' && 'mx-auto text-center')}>
+    <div className={cn('mb-12 max-w-3xl', align === 'center' && 'mx-auto text-center', className)}>
       {eyebrow && (
         <p
           className={cn(
@@ -67,7 +68,7 @@ export function SectionHeader({ eyebrow, title, description, align = 'left', lig
       )}
       <h2
         className={cn(
-          'font-display text-3xl leading-tight sm:text-4xl lg:text-5xl',
+          'font-display text-3xl leading-[1.1] sm:text-4xl lg:text-[3.25rem] lg:leading-[1.08]',
           light ? 'text-stone-50' : 'text-foreground',
         )}
       >
@@ -83,36 +84,6 @@ export function SectionHeader({ eyebrow, title, description, align = 'left', lig
           {description}
         </p>
       )}
-    </div>
-  );
-}
-
-interface ImagePlaceholderProps {
-  label: string;
-  className?: string;
-  aspect?: 'video' | 'square' | 'portrait' | 'wide' | 'hero';
-}
-
-export function ImagePlaceholder({ label, className, aspect = 'video' }: ImagePlaceholderProps) {
-  const aspectClass = {
-    video: 'aspect-video',
-    square: 'aspect-square',
-    portrait: 'aspect-[3/4]',
-    wide: 'aspect-[21/9]',
-    hero: 'aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]',
-  }[aspect];
-
-  return (
-    <div
-      className={cn('image-placeholder relative w-full', aspectClass, className)}
-      role="img"
-      aria-label={label}
-    >
-      <div className="absolute inset-0 flex items-end p-6 sm:p-8">
-        <p className="max-w-md text-xs uppercase tracking-[0.15em] text-stone-600/80 dark:text-stone-400/80">
-          {label}
-        </p>
-      </div>
     </div>
   );
 }

@@ -4,55 +4,62 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-import { ImagePlaceholder } from '@/components/layout/section';
+import { ParallaxImage } from '@/components/motion/parallax-image';
+import { useCity } from '@/components/providers/city-provider';
 import { Button } from '@/components/ui/button';
 
 export function HeroSection() {
+  const { getImage, style } = useCity();
+  const hero = getImage('hero');
+
   return (
     <section className="relative min-h-[100svh] w-full overflow-hidden" aria-label="Hero">
-      <div className="absolute inset-0">
-        <ImagePlaceholder label="Architectural residence at golden hour — full bleed hero" aspect="hero" className="h-full min-h-[100svh]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-925/90 via-stone-925/40 to-stone-925/20" />
-      </div>
+      <ParallaxImage
+        src={hero.src}
+        alt={hero.alt}
+        priority
+        overlayClassName="luxury-gradient-overlay"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-stone-925/60 via-stone-925/20 to-transparent" />
 
-      <div className="relative flex min-h-[100svh] flex-col justify-end px-5 pb-20 pt-32 sm:px-6 lg:px-8">
+      <div className="relative flex min-h-[100svh] flex-col justify-end px-5 pb-24 pt-32 sm:px-6 lg:px-8 lg:pb-28">
         <div className="mx-auto w-full max-w-7xl">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-6 text-xs font-medium uppercase tracking-[0.3em] text-stone-300"
+            className="mb-6 text-xs font-medium uppercase tracking-[0.35em] text-stone-300/90"
           >
-            Home transformation
+            {style.copy.heroEyebrow}
           </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.35 }}
-            className="max-w-4xl font-display text-4xl leading-[1.05] text-stone-50 sm:text-5xl md:text-6xl lg:text-7xl"
+            className="max-w-4xl font-display text-[2.75rem] leading-[1.02] text-stone-50 sm:text-5xl md:text-6xl lg:text-[5.25rem]"
           >
-            Your home,
+            Where light
             <br />
-            <span className="text-stone-300">reimagined.</span>
+            <span className="text-stone-300/95">becomes architecture.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.55 }}
-            className="mt-6 max-w-xl text-base leading-relaxed text-stone-300 sm:text-lg"
+            className="mt-8 max-w-xl text-base leading-relaxed text-stone-300/90 sm:text-lg editorial-prose"
           >
-            We do not sell windows. We engineer the moment light enters your home — and everything that follows.
+            {style.copy.heroSubline}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.75 }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
+            className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
           >
-            <Button variant="accent" size="lg" asChild>
+            <Button variant="accent" size="lg" className="min-w-[220px]" asChild>
               <Link href="/projects">
                 Explore transformations
                 <ArrowRight className="ml-1" />
@@ -61,7 +68,7 @@ export function HeroSection() {
             <Button
               variant="outline"
               size="lg"
-              className="border-stone-500/50 bg-transparent text-stone-100 hover:bg-stone-50/10"
+              className="min-w-[220px] border-stone-500/40 bg-stone-925/20 text-stone-100 backdrop-blur-sm hover:bg-stone-50/10"
               asChild
             >
               <Link href="/#visualizer">Visualize your home</Link>
@@ -69,6 +76,16 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 sm:block"
+        aria-hidden
+      >
+        <div className="h-12 w-px bg-gradient-to-b from-transparent via-stone-400/60 to-transparent" />
+      </motion.div>
     </section>
   );
 }

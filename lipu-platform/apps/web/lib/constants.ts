@@ -5,7 +5,7 @@ export const SITE_DESCRIPTION =
 
 export const NAV_LINKS = [
   { href: '/projects', label: 'Projects' },
-  { href: '/gallery', label: 'Gallery' },
+  { href: '/gallery', label: 'Design Ideas' },
   { href: '/products', label: 'Products' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },

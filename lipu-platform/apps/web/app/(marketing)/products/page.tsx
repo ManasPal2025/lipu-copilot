@@ -4,9 +4,11 @@ import Link from 'next/link';
 import { PageHero } from '@/components/layout/page-hero';
 import { Container, Section } from '@/components/layout/section';
 import { FadeIn } from '@/components/motion/fade-in';
-import { ProductCard } from '@/components/marketing/product-card';
+import { ProductsCatalog } from '@/components/marketing/products-catalog';
 import { QuoteCTASection } from '@/components/marketing/quote-cta';
+import { ArchitecturalImage } from '@/components/ui/architectural-image';
 import { Button } from '@/components/ui/button';
+import { images } from '@/lib/images';
 import { products } from '@/lib/mock-data';
 
 export const metadata: Metadata = {
@@ -15,8 +17,6 @@ export const metadata: Metadata = {
     'Premium UPVC window and door systems — Horizon, Atelier, Grand Entrance, and more. Engineered for Indian climates.',
 };
 
-const categories = ['All', 'Windows', 'Doors', 'Facades'] as const;
-
 export default function ProductsPage() {
   return (
     <>
@@ -24,37 +24,39 @@ export default function ProductsPage() {
         eyebrow="Systems & profiles"
         title="Engineered for the vision"
         description="Every profile is built for performance — thermal, acoustic, and monsoon resilience. Specification follows consultation, never the reverse."
+        image={images.pageHero.products}
       />
 
       <Section>
         <Container>
           <FadeIn>
-            <div className="mb-12 flex flex-wrap gap-3">
-              {categories.map((cat) => (
-                <Button key={cat} variant={cat === 'All' ? 'default' : 'outline'} size="sm">
-                  {cat}
-                </Button>
-              ))}
-            </div>
+            <p className="mb-4 max-w-2xl text-muted-foreground editorial-prose">
+              Profiles are specified after consultation — never before. Explore our systems to understand what
+              becomes possible when craft meets climate.
+            </p>
           </FadeIn>
 
-          <div className="space-y-0">
-            {products.map((product, i) => (
-              <FadeIn key={product.id} delay={i * 0.05}>
-                <ProductCard product={product} layout="list" />
-              </FadeIn>
-            ))}
-          </div>
+          <ProductsCatalog products={products} />
 
           <FadeIn>
-            <div className="mt-16 rounded-sm border border-border bg-muted/40 p-8 text-center sm:p-12">
-              <h2 className="font-display text-2xl sm:text-3xl">Not sure which system fits?</h2>
-              <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
-                Our consultants match profiles to your architecture, climate, and lifestyle — not a catalogue page.
-              </p>
-              <Button variant="accent" className="mt-6" asChild>
-                <Link href="/contact#quote">Book a specification review</Link>
-              </Button>
+            <div className="relative mt-20 overflow-hidden rounded-sm lg:mt-28">
+              <ArchitecturalImage
+                src={images.products.horizonDetail.src}
+                alt=""
+                aspect="wide"
+                className="opacity-25"
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-background/88" />
+              <div className="relative p-10 text-center sm:p-16 lg:p-20">
+                <h2 className="font-display text-3xl sm:text-4xl">Not sure which system fits?</h2>
+                <p className="mx-auto mt-4 max-w-lg text-muted-foreground editorial-prose">
+                  Our consultants match profiles to your architecture, climate, and lifestyle — not a catalogue page.
+                </p>
+                <Button variant="accent" className="mt-8" size="lg" asChild>
+                  <Link href="/contact#quote">Book a specification review</Link>
+                </Button>
+              </div>
             </div>
           </FadeIn>
         </Container>

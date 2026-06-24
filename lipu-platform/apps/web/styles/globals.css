@@ -52,6 +52,10 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
 
+  ::selection {
+    background: hsl(32 28% 42% / 0.25);
+  }
+
   h1,
   h2,
   h3,
@@ -65,22 +69,16 @@
     text-wrap: balance;
   }
 
-  .image-placeholder {
-    @apply relative overflow-hidden bg-stone-200;
-    background-image: linear-gradient(
-      135deg,
-      hsl(30 10% 88%) 0%,
-      hsl(30 8% 82%) 50%,
-      hsl(32 12% 76%) 100%
-    );
+  .editorial-prose {
+    @apply text-base leading-[1.75] sm:text-lg sm:leading-[1.8];
   }
 
-  .dark .image-placeholder {
-    background-image: linear-gradient(
-      135deg,
-      hsl(24 8% 16%) 0%,
-      hsl(24 10% 12%) 50%,
-      hsl(24 8% 10%) 100%
+  .luxury-gradient-overlay {
+    background: linear-gradient(
+      to top,
+      hsl(24 10% 6% / 0.92) 0%,
+      hsl(24 10% 6% / 0.55) 45%,
+      hsl(24 10% 6% / 0.25) 100%
     );
   }
 }

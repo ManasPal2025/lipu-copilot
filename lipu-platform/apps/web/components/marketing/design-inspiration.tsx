@@ -1,7 +1,10 @@
-import { FadeIn } from '@/components/motion/fade-in';
-import { Container, ImagePlaceholder, Section, SectionHeader } from '@/components/layout/section';
-import { designStyles } from '@/lib/mock-data';
 import Link from 'next/link';
+
+import { FadeIn } from '@/components/motion/fade-in';
+import { ImageZoom } from '@/components/motion/image-zoom';
+import { Container, Section, SectionHeader } from '@/components/layout/section';
+import { ArchitecturalImage } from '@/components/ui/architectural-image';
+import { designStyles } from '@/lib/mock-data';
 
 export function DesignInspirationSection() {
   return (
@@ -10,22 +13,29 @@ export function DesignInspirationSection() {
         <FadeIn>
           <SectionHeader
             eyebrow="Design inspiration"
-            title="Find your architectural language"
-            description="Every home has a story. We help you discover the design vocabulary that tells yours."
+            title="Ideas for every room in your home"
+            description="Living rooms, balconies, kitchens, villas — browse real-home photos that help you imagine the finished result."
             light
             align="center"
           />
         </FadeIn>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {designStyles.map((style, i) => (
             <FadeIn key={style.id} delay={i * 0.08}>
               <article className="group flex h-full flex-col">
-                <ImagePlaceholder label={style.imageLabel} aspect="portrait" />
-                <div className="mt-5 flex flex-1 flex-col">
+                <ImageZoom>
+                  <ArchitecturalImage
+                    src={style.image.src}
+                    alt={style.image.alt}
+                    aspect="portrait"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                  />
+                </ImageZoom>
+                <div className="mt-6 flex flex-1 flex-col">
                   <h3 className="font-display text-2xl text-stone-50">{style.name}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-stone-400">{style.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-stone-400">{style.description}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
                     {style.tags.map((tag) => (
                       <span
                         key={tag}
@@ -42,10 +52,14 @@ export function DesignInspirationSection() {
         </div>
 
         <FadeIn>
-          <p className="mt-12 text-center text-sm text-stone-500">
-            Not sure where to begin?{' '}
+          <p className="mt-16 text-center text-sm text-stone-500">
+            Browse all 100 ideas by room —{' '}
+            <Link href="/gallery" className="text-stone-300 underline-offset-4 hover:underline">
+              open the inspiration gallery
+            </Link>
+            {' '}or{' '}
             <Link href="/contact" className="text-stone-300 underline-offset-4 hover:underline">
-              Book a design consultation
+              book a design consultation
             </Link>
           </p>
         </FadeIn>

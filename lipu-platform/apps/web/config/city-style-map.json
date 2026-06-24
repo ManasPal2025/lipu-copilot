@@ -1,0 +1,647 @@
+{
+  "defaultCity": "bhubaneswar",
+  "imageCategories": [
+    "hero",
+    "exterior",
+    "apartment",
+    "villa",
+    "duplex",
+    "coastal",
+    "commercial",
+    "interior",
+    "transformation",
+    "visualizer"
+  ],
+  "cities": {
+    "bhubaneswar": {
+      "label": "Bhubaneswar",
+      "state": "Odisha",
+      "region": "odisha",
+      "architectureType": "modern-indian-apartment",
+      "styleKeywords": [
+        "modern Indian apartments",
+        "duplex homes",
+        "tropical climate",
+        "flat rooftops",
+        "pastel neutral exteriors",
+        "balconies",
+        "grills",
+        "aluminum glass railings"
+      ],
+      "colorPalette": {
+        "primary": "#e8e4dc",
+        "accent": "#8b7355",
+        "neutral": "#f5f3ef",
+        "surface": "#2a2826"
+      },
+      "images": {
+        "hero": {
+          "path": "hero/main.jpg",
+          "alt": "Modern high-rise apartment in Bhubaneswar with floor-to-ceiling glazing"
+        },
+        "exterior": {
+          "path": "projects/skyline-penthouse.jpg",
+          "alt": "Contemporary residential tower in Bhubaneswar with balcony glazing"
+        },
+        "apartment": {
+          "path": "projects/skyline-penthouse.jpg",
+          "alt": "Luxury apartment envelope in Bhubaneswar"
+        },
+        "villa": {
+          "path": "projects/lonavala-retreat.jpg",
+          "alt": "Premium villa with large glass openings near Bhubaneswar"
+        },
+        "duplex": {
+          "path": "projects/lonavala-retreat.jpg",
+          "alt": "Indian duplex home with modern UPVC windows in Bhubaneswar"
+        },
+        "coastal": {
+          "path": "projects/coastal-residence.jpg",
+          "alt": "Coastal-influenced home with monsoon-ready glazing"
+        },
+        "commercial": {
+          "path": "projects/corporate-lobby.jpg",
+          "alt": "Commercial glass facade in Bhubaneswar"
+        },
+        "interior": {
+          "path": "hero/transformation.jpg",
+          "alt": "Indian apartment interior flooded with natural daylight"
+        },
+        "transformation": {
+          "path": "hero/transformation.jpg",
+          "alt": "Living room transformation with panoramic windows in Bhubaneswar"
+        },
+        "visualizer": {
+          "path": "contact/visualizer.jpg",
+          "alt": "Modern Indian duplex facade for visualization preview"
+        }
+      },
+      "copy": {
+        "heroEyebrow": "Architectural transformation in Bhubaneswar",
+        "heroSubline": "Premium glazing engineered for Odisha's climate — heat, monsoon, and salt air considered from day one.",
+        "visualizerTitle": "See your Bhubaneswar home transformed",
+        "visualizerDescription": "Upload a photo of your home in Bhubaneswar. Preview how premium UPVC glazing could transform your facade.",
+        "ctaTitle": "Your transformation in Bhubaneswar starts here",
+        "seoHeadline": "Best UPVC Windows for Homes in Bhubaneswar"
+      }
+    },
+    "cuttack": {
+      "label": "Cuttack",
+      "state": "Odisha",
+      "region": "odisha",
+      "architectureType": "indian-duplex-mixed",
+      "styleKeywords": [
+        "duplex homes",
+        "older urban fabric",
+        "river-adjacent",
+        "mixed residential",
+        "balcony grills",
+        "neutral exteriors",
+        "tropical climate"
+      ],
+      "colorPalette": {
+        "primary": "#ddd5c8",
+        "accent": "#7a6b55",
+        "neutral": "#f0ebe3",
+        "surface": "#2c2926"
+      },
+      "images": {
+        "hero": {
+          "path": "projects/heritage-revival.jpg",
+          "alt": "Residential building in Cuttack with restored window profiles"
+        },
+        "exterior": {
+          "path": "projects/heritage-revival.jpg",
+          "alt": "Cuttack duplex exterior with refined glazing"
+        },
+        "apartment": {
+          "path": "gallery/courtyard-frame.jpg",
+          "alt": "Apartment courtyard framed by windows in Cuttack"
+        },
+        "villa": {
+          "path": "projects/lonavala-retreat.jpg",
+          "alt": "Modern villa with glazing near Cuttack"
+        },
+        "duplex": {
+          "path": "projects/heritage-revival.jpg",
+          "alt": "Indian duplex in Cuttack with upgraded UPVC openings"
+        },
+        "coastal": {
+          "path": "projects/coastal-residence.jpg",
+          "alt": "Coastal-resilient glazing for Odisha homes"
+        },
+        "commercial": {
+          "path": "projects/corporate-lobby.jpg",
+          "alt": "Commercial entrance with structural glass"
+        },
+        "interior": {
+          "path": "gallery/stairwell-light.jpg",
+          "alt": "Duplex stairwell with vertical daylight in Cuttack"
+        },
+        "transformation": {
+          "path": "gallery/courtyard-frame.jpg",
+          "alt": "Heritage home interior transformation in Cuttack"
+        },
+        "visualizer": {
+          "path": "projects/heritage-revival.jpg",
+          "alt": "Cuttack residential facade for AI visualization"
+        }
+      },
+      "copy": {
+        "heroEyebrow": "Architectural transformation in Cuttack",
+        "heroSubline": "From Buxi Bazaar to river-adjacent homes — glazing that respects Cuttack's character and India's climate.",
+        "visualizerTitle": "See your Cuttack home transformed",
+        "visualizerDescription": "Upload a photo of your Cuttack home. Preview upgraded windows and doors before you commit.",
+        "ctaTitle": "Your transformation in Cuttack starts here",
+        "seoHeadline": "Best UPVC Windows for Homes in Cuttack"
+      }
+    },
+    "puri": {
+      "label": "Puri",
+      "state": "Odisha",
+      "region": "odisha",
+      "architectureType": "coastal-indian-villa",
+      "styleKeywords": [
+        "coastal-style homes",
+        "balconies",
+        "neutral exteriors",
+        "tropical settings",
+        "sea breeze",
+        "monsoon-ready glazing",
+        "beach-side villas"
+      ],
+      "colorPalette": {
+        "primary": "#e6eef0",
+        "accent": "#6b8f8a",
+        "neutral": "#f7f5f0",
+        "surface": "#1e2a2e"
+      },
+      "images": {
+        "hero": {
+          "path": "projects/coastal-residence.jpg",
+          "alt": "Coastal apartment in Puri with balcony glazing and tropical greenery"
+        },
+        "exterior": {
+          "path": "projects/coastal-residence.jpg",
+          "alt": "Puri coastal home with panoramic sea-facing windows"
+        },
+        "apartment": {
+          "path": "gallery/sea-horizon.jpg",
+          "alt": "Coastal apartment with Bay of Bengal views in Puri"
+        },
+        "villa": {
+          "path": "projects/goa-villa.jpg",
+          "alt": "Tropical villa near Puri with courtyard glazing"
+        },
+        "duplex": {
+          "path": "projects/goa-villa.jpg",
+          "alt": "Coastal duplex with sliding glass portals in Puri"
+        },
+        "coastal": {
+          "path": "gallery/sea-horizon.jpg",
+          "alt": "Sea horizon framed through floor-to-ceiling glass in Puri"
+        },
+        "commercial": {
+          "path": "projects/corporate-lobby.jpg",
+          "alt": "Commercial glazing for Puri hospitality and retail"
+        },
+        "interior": {
+          "path": "gallery/morning-light.jpg",
+          "alt": "Sunlit coastal interior with natural light in Puri"
+        },
+        "transformation": {
+          "path": "gallery/villa-pool.jpg",
+          "alt": "Poolside villa transformation with sliding glass in Puri"
+        },
+        "visualizer": {
+          "path": "projects/goa-villa.jpg",
+          "alt": "Coastal villa facade for visualization in Puri"
+        }
+      },
+      "copy": {
+        "heroEyebrow": "Architectural transformation in Puri",
+        "heroSubline": "Coastal engineering for salt air, sea breeze, and the Bay of Bengal horizon — without compromising silence.",
+        "visualizerTitle": "See your Puri home transformed",
+        "visualizerDescription": "Upload your coastal home photo. Preview glazing engineered for Puri's humidity and monsoon seasons.",
+        "ctaTitle": "Your transformation in Puri starts here",
+        "seoHeadline": "Best UPVC Windows for Homes in Puri"
+      }
+    },
+    "kolkata": {
+      "label": "Kolkata",
+      "state": "West Bengal",
+      "region": "east",
+      "architectureType": "bengali-apartment-mixed",
+      "styleKeywords": [
+        "Bengali-style apartments",
+        "old and modern mix",
+        "colonial elements",
+        "colorful exteriors",
+        "compact balconies"
+      ],
+      "colorPalette": {
+        "primary": "#e8dcc8",
+        "accent": "#c45c3e",
+        "neutral": "#faf6f0",
+        "surface": "#252220"
+      },
+      "images": {
+        "hero": {
+          "path": "gallery/urban-edge.jpg",
+          "alt": "Kolkata high-rise residential facade with glazing grid"
+        },
+        "exterior": {
+          "path": "gallery/urban-edge.jpg",
+          "alt": "Colorful Kolkata apartment building with modern windows"
+        },
+        "apartment": {
+          "path": "gallery/urban-edge.jpg",
+          "alt": "Bengali apartment with compact balcony glazing"
+        },
+        "villa": {
+          "path": "projects/lonavala-retreat.jpg",
+          "alt": "Modern villa with glazing in Kolkata suburbs"
+        },
+        "duplex": {
+          "path": "projects/heritage-revival.jpg",
+          "alt": "Heritage-influenced duplex with upgraded profiles"
+        },
+        "coastal": {
+          "path": "projects/coastal-residence.jpg",
+          "alt": "Coastal-resilient windows for humid climates"
+        },
+        "commercial": {
+          "path": "products/facade-system.jpg",
+          "alt": "Commercial structural glazing in Kolkata"
+        },
+        "interior": {
+          "path": "hero/transformation.jpg",
+          "alt": "Kolkata apartment interior with natural daylight"
+        },
+        "transformation": {
+          "path": "gallery/city-penthouse.jpg",
+          "alt": "Urban apartment transformation in Kolkata"
+        },
+        "visualizer": {
+          "path": "gallery/urban-edge.jpg",
+          "alt": "Kolkata residential facade for visualization"
+        }
+      },
+      "copy": {
+        "heroEyebrow": "Architectural transformation in Kolkata",
+        "heroSubline": "From colonial facades to modern towers — glazing that honours Bengal's architecture and monsoon reality.",
+        "visualizerTitle": "See your Kolkata home transformed",
+        "visualizerDescription": "Upload your Kolkata home photo. Preview premium glazing suited to Bengal's humidity and urban density.",
+        "ctaTitle": "Your transformation in Kolkata starts here",
+        "seoHeadline": "Best UPVC Windows for Homes in Kolkata"
+      }
+    },
+    "delhi": {
+      "label": "Delhi NCR",
+      "state": "Delhi",
+      "region": "north",
+      "architectureType": "modern-urban-villa",
+      "styleKeywords": [
+        "modern urban homes",
+        "high-rise apartments",
+        "minimalist interiors",
+        "premium villas",
+        "metro city architecture"
+      ],
+      "colorPalette": {
+        "primary": "#eceae6",
+        "accent": "#5c4a3a",
+        "neutral": "#f8f7f5",
+        "surface": "#1a1918"
+      },
+      "images": {
+        "hero": {
+          "path": "projects/skyline-penthouse.jpg",
+          "alt": "Modern high-rise apartment in Delhi NCR with glass facade"
+        },
+        "exterior": {
+          "path": "projects/skyline-penthouse.jpg",
+          "alt": "Premium urban residence in Delhi NCR"
+        },
+        "apartment": {
+          "path": "gallery/city-penthouse.jpg",
+          "alt": "Delhi NCR apartment with panoramic city views"
+        },
+        "villa": {
+          "path": "projects/lonavala-retreat.jpg",
+          "alt": "Premium villa with floor-to-ceiling glazing in NCR"
+        },
+        "duplex": {
+          "path": "projects/lonavala-retreat.jpg",
+          "alt": "Urban duplex with modern UPVC envelope"
+        },
+        "coastal": {
+          "path": "hero/transformation.jpg",
+          "alt": "Climate-rated glazing for Indian metros"
+        },
+        "commercial": {
+          "path": "projects/corporate-lobby.jpg",
+          "alt": "Corporate glass entrance in Delhi NCR"
+        },
+        "interior": {
+          "path": "design/modern-minimal.jpg",
+          "alt": "Minimalist Delhi apartment interior with natural light"
+        },
+        "transformation": {
+          "path": "design/modern-minimal.jpg",
+          "alt": "Delhi home interior transformation with premium glazing"
+        },
+        "visualizer": {
+          "path": "contact/visualizer.jpg",
+          "alt": "NCR home facade for AI visualization"
+        }
+      },
+      "copy": {
+        "heroEyebrow": "Architectural transformation in Delhi NCR",
+        "heroSubline": "Metro-grade acoustic performance and thermal comfort for high-rises, villas, and urban duplexes.",
+        "visualizerTitle": "See your Delhi NCR home transformed",
+        "visualizerDescription": "Upload your NCR home photo. Preview glazing engineered for heat, dust, and urban noise.",
+        "ctaTitle": "Your transformation in Delhi NCR starts here",
+        "seoHeadline": "Best UPVC Windows for Homes in Delhi NCR"
+      }
+    },
+    "mumbai": {
+      "label": "Mumbai",
+      "state": "Maharashtra",
+      "region": "west",
+      "architectureType": "high-rise-sea-facing",
+      "styleKeywords": [
+        "high-rise buildings",
+        "sea-facing apartments",
+        "modern minimalist homes",
+        "glass-heavy facades",
+        "coastal humidity"
+      ],
+      "colorPalette": {
+        "primary": "#e4e8ec",
+        "accent": "#4a6fa5",
+        "neutral": "#f4f6f8",
+        "surface": "#181c22"
+      },
+      "images": {
+        "hero": {
+          "path": "gallery/city-penthouse.jpg",
+          "alt": "Mumbai residential towers at dusk with illuminated glazing"
+        },
+        "exterior": {
+          "path": "projects/coastal-residence.jpg",
+          "alt": "Sea-facing Mumbai apartment with balcony glazing"
+        },
+        "apartment": {
+          "path": "gallery/city-penthouse.jpg",
+          "alt": "Mumbai high-rise apartment with floor-to-ceiling glass"
+        },
+        "villa": {
+          "path": "projects/goa-villa.jpg",
+          "alt": "Modern minimalist villa with glazing near Mumbai"
+        },
+        "duplex": {
+          "path": "projects/lonavala-retreat.jpg",
+          "alt": "Contemporary duplex with panoramic windows"
+        },
+        "coastal": {
+          "path": "gallery/sea-horizon.jpg",
+          "alt": "Arabian Sea views through coastal glazing"
+        },
+        "commercial": {
+          "path": "products/facade-system.jpg",
+          "alt": "Glass-heavy commercial facade in Mumbai"
+        },
+        "interior": {
+          "path": "hero/transformation.jpg",
+          "alt": "Mumbai apartment interior with city light"
+        },
+        "transformation": {
+          "path": "projects/skyline-penthouse.jpg",
+          "alt": "Penthouse envelope transformation in Mumbai"
+        },
+        "visualizer": {
+          "path": "projects/coastal-residence.jpg",
+          "alt": "Mumbai residential facade for visualization"
+        }
+      },
+      "copy": {
+        "heroEyebrow": "Architectural transformation in Mumbai",
+        "heroSubline": "Salt air, sea breeze, and forty-two decibels of silence — glazing for homes above the bay.",
+        "visualizerTitle": "See your Mumbai home transformed",
+        "visualizerDescription": "Upload your Mumbai home photo. Preview glazing rated for coastal humidity and high-rise life.",
+        "ctaTitle": "Your transformation in Mumbai starts here",
+        "seoHeadline": "Best UPVC Windows for Homes in Mumbai"
+      }
+    },
+    "chennai": {
+      "label": "Chennai",
+      "state": "Tamil Nadu",
+      "region": "south",
+      "architectureType": "tropical-modern-mixed",
+      "styleKeywords": [
+        "tropical modern homes",
+        "tiled rooftops",
+        "pastel colors",
+        "traditional and modern mix",
+        "cross-ventilation"
+      ],
+      "colorPalette": {
+        "primary": "#ebe6dc",
+        "accent": "#9a7b4f",
+        "neutral": "#f6f3ed",
+        "surface": "#242220"
+      },
+      "images": {
+        "hero": {
+          "path": "design/tropical-open.jpg",
+          "alt": "Tropical modern home in Chennai with open-plan glazing"
+        },
+        "exterior": {
+          "path": "design/coastal-resilient.jpg",
+          "alt": "Tropical exterior with weather-resistant glazing in Chennai"
+        },
+        "apartment": {
+          "path": "projects/coastal-residence.jpg",
+          "alt": "Chennai apartment with balcony glazing and greenery"
+        },
+        "villa": {
+          "path": "design/tropical-open.jpg",
+          "alt": "Tropical villa with courtyard connection in Chennai"
+        },
+        "duplex": {
+          "path": "projects/goa-villa.jpg",
+          "alt": "Duplex with monsoon-ready ventilation and glazing"
+        },
+        "coastal": {
+          "path": "gallery/monsoon-calm.jpg",
+          "alt": "Monsoon-season residential facade in Chennai"
+        },
+        "commercial": {
+          "path": "projects/corporate-lobby.jpg",
+          "alt": "Commercial glazing for Chennai business districts"
+        },
+        "interior": {
+          "path": "gallery/morning-light.jpg",
+          "alt": "Tropical interior with soft morning light"
+        },
+        "transformation": {
+          "path": "gallery/monsoon-calm.jpg",
+          "alt": "Chennai home transformation with monsoon-rated sealing"
+        },
+        "visualizer": {
+          "path": "design/tropical-open.jpg",
+          "alt": "Chennai home facade for visualization"
+        }
+      },
+      "copy": {
+        "heroEyebrow": "Architectural transformation in Chennai",
+        "heroSubline": "Tropical modernism with monsoon engineering — cross-ventilation designed into every elevation.",
+        "visualizerTitle": "See your Chennai home transformed",
+        "visualizerDescription": "Upload your Chennai home photo. Preview glazing built for heat, humidity, and coastal storms.",
+        "ctaTitle": "Your transformation in Chennai starts here",
+        "seoHeadline": "Best UPVC Windows for Homes in Chennai"
+      }
+    },
+    "bangalore": {
+      "label": "Bangalore",
+      "state": "Karnataka",
+      "region": "south",
+      "architectureType": "contemporary-villa-apartment",
+      "styleKeywords": [
+        "modern villas",
+        "IT-corridor apartments",
+        "contemporary architecture",
+        "earth tones",
+        "greenery",
+        "glass railings"
+      ],
+      "colorPalette": {
+        "primary": "#e2e6df",
+        "accent": "#5a6b4a",
+        "neutral": "#f3f5f0",
+        "surface": "#1f221e"
+      },
+      "images": {
+        "hero": {
+          "path": "hero/main.jpg",
+          "alt": "Modern apartment building in Bangalore with illuminated glazing"
+        },
+        "exterior": {
+          "path": "hero/editorial-strip.jpg",
+          "alt": "Contemporary Bangalore residence at dusk"
+        },
+        "apartment": {
+          "path": "projects/skyline-penthouse.jpg",
+          "alt": "IT-corridor apartment with premium glazing"
+        },
+        "villa": {
+          "path": "projects/lonavala-retreat.jpg",
+          "alt": "Modern Bangalore villa surrounded by greenery"
+        },
+        "duplex": {
+          "path": "projects/lonavala-retreat.jpg",
+          "alt": "Contemporary duplex with expansive glass openings"
+        },
+        "coastal": {
+          "path": "projects/coastal-residence.jpg",
+          "alt": "Weather-sealed glazing for Indian climates"
+        },
+        "commercial": {
+          "path": "products/facade-system.jpg",
+          "alt": "Commercial facade in Bangalore tech corridor"
+        },
+        "interior": {
+          "path": "gallery/morning-light.jpg",
+          "alt": "Bangalore apartment interior with garden light"
+        },
+        "transformation": {
+          "path": "gallery/morning-light.jpg",
+          "alt": "Home transformation with natural light in Bangalore"
+        },
+        "visualizer": {
+          "path": "contact/visualizer.jpg",
+          "alt": "Bangalore villa facade for visualization"
+        }
+      },
+      "copy": {
+        "heroEyebrow": "Architectural transformation in Bangalore",
+        "heroSubline": "Earth tones, garden adjacency, and contemporary lines — glazing for India's garden city.",
+        "visualizerTitle": "See your Bangalore home transformed",
+        "visualizerDescription": "Upload your Bangalore home photo. Preview glazing suited to temperate highs and monsoon seasons.",
+        "ctaTitle": "Your transformation in Bangalore starts here",
+        "seoHeadline": "Best UPVC Windows for Homes in Bangalore"
+      }
+    },
+    "other": {
+      "label": "Other cities",
+      "state": "India",
+      "region": "generic",
+      "architectureType": "modern-indian-generic",
+      "styleKeywords": [
+        "modern Indian architecture",
+        "apartments",
+        "villas",
+        "duplex homes",
+        "tropical climate",
+        "Indian neighborhoods"
+      ],
+      "colorPalette": {
+        "primary": "#e8e4dc",
+        "accent": "#8b7355",
+        "neutral": "#f5f3ef",
+        "surface": "#2a2826"
+      },
+      "images": {
+        "hero": {
+          "path": "hero/main.jpg",
+          "alt": "Modern Indian residence with premium glazing"
+        },
+        "exterior": {
+          "path": "projects/heritage-revival.jpg",
+          "alt": "Indian residential exterior with modern windows"
+        },
+        "apartment": {
+          "path": "projects/skyline-penthouse.jpg",
+          "alt": "Indian apartment with contemporary glazing"
+        },
+        "villa": {
+          "path": "projects/goa-villa.jpg",
+          "alt": "Indian villa with courtyard glazing"
+        },
+        "duplex": {
+          "path": "projects/lonavala-retreat.jpg",
+          "alt": "Indian duplex with UPVC window upgrade"
+        },
+        "coastal": {
+          "path": "projects/coastal-residence.jpg",
+          "alt": "Coastal-resilient Indian home glazing"
+        },
+        "commercial": {
+          "path": "projects/corporate-lobby.jpg",
+          "alt": "Indian commercial glass facade"
+        },
+        "interior": {
+          "path": "hero/transformation.jpg",
+          "alt": "Indian home interior with natural daylight"
+        },
+        "transformation": {
+          "path": "hero/transformation.jpg",
+          "alt": "Home transformation with panoramic glazing in India"
+        },
+        "visualizer": {
+          "path": "contact/visualizer.jpg",
+          "alt": "Indian home facade for visualization preview"
+        }
+      },
+      "copy": {
+        "heroEyebrow": "Architectural transformation across India",
+        "heroSubline": "Premium UPVC windows and doors engineered for Indian climates — never imported aesthetics.",
+        "visualizerTitle": "See your home transformed",
+        "visualizerDescription": "Upload a photo of your Indian home. Preview premium glazing before you commit.",
+        "ctaTitle": "Your transformation starts here",
+        "seoHeadline": "Best UPVC Windows for Indian Homes"
+      }
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "categories": [
+    {
+      "slug": "living-room",
+      "title": "Living Room Ideas",
+      "subtitle": "Modern Living Rooms",
+      "description": "See how floor-to-ceiling UPVC windows transform everyday living rooms in Bhubaneswar and Odisha.",
+      "photos": [
+        { "file": "01.jpg", "pexelsId": 276724, "title": "Sunlit living room with large windows", "alt": "Bright Indian living room with natural light through UPVC windows" },
+        { "file": "02.jpg", "pexelsId": 1457842, "title": "Neutral lounge with garden views", "alt": "Modern living room overlooking a green terrace in an Indian home" },
+        { "file": "03.jpg", "pexelsId": 1457847, "title": "Cozy family room at golden hour", "alt": "Warm living space with soft daylight through wide glass openings" },
+        { "file": "04.jpg", "pexelsId": 14002095, "title": "City apartment living area", "alt": "Contemporary Indian apartment living room with city views" },
+        { "file": "05.jpg", "pexelsId": 259588, "title": "Open-plan living with daylight", "alt": "Spacious living room filled with natural light through panoramic glazing" },
+        { "file": "06.jpg", "pexelsId": 1090638, "title": "Calm sitting room with soft light", "alt": "Serene living room interior with warm window light" },
+        { "file": "07.jpg", "pexelsId": 261189, "title": "Duplex living with double-height glass", "alt": "Indian duplex living room with tall windows and warm tones" },
+        { "file": "08.jpg", "pexelsId": 271618, "title": "Minimal living room inspiration", "alt": "Clean-lined living room showing slim window frames and daylight" },
+        { "file": "09.jpg", "pexelsId": 280222, "title": "Evening glow in the living room", "alt": "Living room at dusk with warm interior light through glass" },
+        { "file": "10.jpg", "pexelsId": 1668860, "title": "Comfortable lounge with wide openings", "alt": "Inviting living room with large UPVC windows and natural ventilation" }
+      ]
+    },
+    {
+      "slug": "balcony",
+      "title": "Balcony Ideas",
+      "subtitle": "Balcony Design Ideas",
+      "description": "Sliding doors and balcony glazing that bring the outdoors in — perfect for Odisha's tropical climate.",
+      "photos": [
+        { "file": "01.jpg", "pexelsId": 753878, "title": "Balcony with glass railing", "alt": "Indian apartment balcony with glass railing and open views" },
+        { "file": "02.jpg", "pexelsId": 2805558, "title": "Morning coffee on the balcony", "alt": "Balcony seating area connected to the home through sliding glass" },
+        { "file": "03.jpg", "pexelsId": 38179316, "title": "Apartment balcony with greenery", "alt": "Mumbai-style balcony with flowering plants and modern glazing" },
+        { "file": "04.jpg", "pexelsId": 37334792, "title": "High-rise balcony views", "alt": "Urban apartment balcony with colorful facade and glass balustrade" },
+        { "file": "05.jpg", "pexelsId": 9285535, "title": "Balcony glazing at dusk", "alt": "Illuminated apartment balconies on a modern Indian tower" },
+        { "file": "06.jpg", "pexelsId": 5824904, "title": "Compact balcony transformation", "alt": "Small balcony opened up with sliding UPVC doors" },
+        { "file": "07.jpg", "pexelsId": 5824905, "title": "Wrap-around balcony light", "alt": "Corner balcony with floor-to-ceiling glass in an Indian home" },
+        { "file": "08.jpg", "pexelsId": 5824906, "title": "Balcony garden connection", "alt": "Balcony linked to indoor living through wide glass doors" },
+        { "file": "09.jpg", "pexelsId": 5824907, "title": "Shaded balcony retreat", "alt": "Balcony with monsoon-ready glazing and comfortable seating" },
+        { "file": "10.jpg", "pexelsId": 5824908, "title": "City balcony inspiration", "alt": "Apartment balcony overlooking the neighbourhood skyline" }
+      ]
+    },
+    {
+      "slug": "kitchen",
+      "title": "Kitchen Ideas",
+      "subtitle": "Kitchen Window Inspirations",
+      "description": "Bright, ventilated kitchens with casement and sliding windows designed for Indian cooking and monsoon seasons.",
+      "photos": [
+        { "file": "01.jpg", "pexelsId": 276551, "title": "Bright kitchen with window seat", "alt": "Modern kitchen with large window bringing in daylight" },
+        { "file": "02.jpg", "pexelsId": 1080721, "title": "White kitchen with garden view", "alt": "Clean kitchen overlooking greenery through UPVC casement windows" },
+        { "file": "03.jpg", "pexelsId": 2089698, "title": "Open kitchen and dining light", "alt": "Open-plan kitchen filled with natural light through wide windows" },
+        { "file": "04.jpg", "pexelsId": 2724749, "title": "Compact kitchen window idea", "alt": "Space-efficient kitchen with strategically placed ventilation windows" },
+        { "file": "05.jpg", "pexelsId": 2065921, "title": "Warm wood-tone kitchen", "alt": "Indian kitchen with warm materials and bright window openings" },
+        { "file": "06.jpg", "pexelsId": 2065922, "title": "Kitchen breakfast nook", "alt": "Kitchen corner with bench seating beside a tall window" },
+        { "file": "07.jpg", "pexelsId": 2065923, "title": "Minimal modular kitchen", "alt": "Modular kitchen with slim-profile UPVC windows above the counter" },
+        { "file": "08.jpg", "pexelsId": 2065924, "title": "Cross-ventilated kitchen", "alt": "Kitchen designed for airflow with windows on two sides" },
+        { "file": "09.jpg", "pexelsId": 2065925, "title": "Island kitchen with daylight", "alt": "Kitchen island beneath pendant lights and generous window light" },
+        { "file": "10.jpg", "pexelsId": 2065926, "title": "Family kitchen inspiration", "alt": "Welcoming family kitchen with windows framing the courtyard" }
+      ]
+    },
+    {
+      "slug": "villa",
+      "title": "Villa Ideas",
+      "subtitle": "Villa Window Inspiration",
+      "description": "Premium duplex and villa homes across Odisha — see how glazing defines luxury tropical living.",
+      "photos": [
+        { "file": "01.jpg", "pexelsId": 35361412, "title": "Modern villa with glass facade", "alt": "Contemporary Indian villa with floor-to-ceiling UPVC glazing" },
+        { "file": "02.jpg", "pexelsId": 2806377, "title": "Hillside villa with views", "alt": "Villa home with expansive windows opening to landscaped grounds" },
+        { "file": "03.jpg", "pexelsId": 1029599, "title": "Villa entrance with glass", "alt": "Grand villa facade combining doors and windows in one envelope" },
+        { "file": "04.jpg", "pexelsId": 1134176, "title": "Poolside villa living", "alt": "Tropical villa with sliding glass walls facing the pool" },
+        { "file": "05.jpg", "pexelsId": 1396122, "title": "Villa at golden hour", "alt": "Premium villa exterior glowing warmly through large glass panels" },
+        { "file": "06.jpg", "pexelsId": 323780, "title": "Gated community villa", "alt": "Indian villa in a gated layout with modern window proportions" },
+        { "file": "07.jpg", "pexelsId": 186077, "title": "Weekend villa inspiration", "alt": "Weekend villa with generous glazing and lawn connection" },
+        { "file": "08.jpg", "pexelsId": 5824909, "title": "Duplex villa front elevation", "alt": "Two-storey Indian villa with balanced window rhythm" },
+        { "file": "09.jpg", "pexelsId": 5824910, "title": "Courtyard villa design", "alt": "Villa wrapped around a courtyard with windows on every side" },
+        { "file": "10.jpg", "pexelsId": 5824911, "title": "Luxury villa terrace", "alt": "Villa terrace opened with sliding UPVC portals" }
+      ]
+    },
+    {
+      "slug": "apartment",
+      "title": "Apartment Ideas",
+      "subtitle": "Apartment Window Inspiration",
+      "description": "Bhubaneswar and Cuttack apartments — balcony glazing, picture windows, and silent interiors.",
+      "photos": [
+        { "file": "01.jpg", "pexelsId": 35114454, "title": "Residential tower in the city", "alt": "Indian apartment building with contemporary window layout" },
+        { "file": "02.jpg", "pexelsId": 33034471, "title": "Apartment block at dusk", "alt": "Multi-storey apartment with warm interior glow through glass" },
+        { "file": "03.jpg", "pexelsId": 36245020, "title": "High-rise apartment facade", "alt": "Modern high-rise with precision glazing grid" },
+        { "file": "04.jpg", "pexelsId": 37834156, "title": "Skyline apartment living", "alt": "Residential towers at dusk — urban apartment inspiration" },
+        { "file": "05.jpg", "pexelsId": 34725805, "title": "Apartment with city views", "alt": "Living room in a high-rise with panoramic city outlook" },
+        { "file": "06.jpg", "pexelsId": 1643383, "title": "Compact flat renovation", "alt": "Renovated Indian flat with new UPVC window envelope" },
+        { "file": "07.jpg", "pexelsId": 774909, "title": "Corner apartment light", "alt": "Corner unit apartment wrapped in glass for maximum daylight" },
+        { "file": "08.jpg", "pexelsId": 5824912, "title": "3BHK window upgrade", "alt": "Family apartment after full window replacement" },
+        { "file": "09.jpg", "pexelsId": 5824913, "title": "Bedroom bay in a flat", "alt": "Apartment bedroom with bay-style window seating" },
+        { "file": "10.jpg", "pexelsId": 323705, "title": "Flat balcony connection", "alt": "Apartment living room flowing onto a glazed balcony" }
+      ]
+    },
+    {
+      "slug": "french-door",
+      "title": "French Door Ideas",
+      "subtitle": "French Door Inspirations",
+      "description": "Elegant door-window combinations for terraces, gardens, and indoor-outdoor living in Odisha.",
+      "photos": [
+        { "file": "01.jpg", "pexelsId": 2102587, "title": "French doors to the garden", "alt": "French doors opening from the living room to a green garden" },
+        { "file": "02.jpg", "pexelsId": 1134176, "title": "Double doors to the pool", "alt": "Wide French doors connecting villa interior to poolside" },
+        { "file": "03.jpg", "pexelsId": 5824914, "title": "Terrace French door set", "alt": "UPVC French doors leading to a first-floor terrace" },
+        { "file": "04.jpg", "pexelsId": 5824915, "title": "Dining room garden doors", "alt": "Dining space with French doors framing the courtyard" },
+        { "file": "05.jpg", "pexelsId": 5824916, "title": "White French door classic", "alt": "Classic white French doors in a bright Indian home" },
+        { "file": "06.jpg", "pexelsId": 5824917, "title": "Bedroom French door exit", "alt": "Bedroom with French doors opening to a private balcony" },
+        { "file": "07.jpg", "pexelsId": 5824918, "title": "Study with garden access", "alt": "Home office with French doors for natural light and ventilation" },
+        { "file": "08.jpg", "pexelsId": 5824919, "title": "Courtyard French doors", "alt": "Internal courtyard viewed through elegant French door panels" },
+        { "file": "09.jpg", "pexelsId": 5824920, "title": "Entry French door welcome", "alt": "Grand entry with sidelight and French door combination" },
+        { "file": "10.jpg", "pexelsId": 1571468, "title": "Sliding French door hybrid", "alt": "Sliding door system with French door proportions opening to lawn" }
+      ]
+    },
+    {
+      "slug": "bedroom",
+      "title": "Bedroom Ideas",
+      "subtitle": "Bedroom Window Inspirations",
+      "description": "Peaceful bedrooms with the right balance of light, privacy, and ventilation for Odisha homes.",
+      "photos": [
+        { "file": "01.jpg", "pexelsId": 6625720, "title": "Serene master bedroom", "alt": "Master bedroom with soft daylight through wide UPVC windows" },
+        { "file": "02.jpg", "pexelsId": 6625721, "title": "Minimal bedroom retreat", "alt": "Minimal bedroom with floor-to-ceiling glazing and neutral palette" },
+        { "file": "03.jpg", "pexelsId": 6625722, "title": "Guest room with garden view", "alt": "Guest bedroom overlooking greenery through casement windows" },
+        { "file": "04.jpg", "pexelsId": 6625723, "title": "Children's room daylight", "alt": "Bright children's bedroom with safe UPVC window fittings" },
+        { "file": "05.jpg", "pexelsId": 5824921, "title": "Bedroom bay window nook", "alt": "Cozy bedroom reading nook built into a bay window" },
+        { "file": "06.jpg", "pexelsId": 5824922, "title": "Coastal bedroom calm", "alt": "Bedroom in a Puri-area home with sea-breeze ventilation" },
+        { "file": "07.jpg", "pexelsId": 348612, "title": "Compact bedroom idea", "alt": "Small bedroom maximised with a well-placed picture window" },
+        { "file": "08.jpg", "pexelsId": 348613, "title": "Warm timber-tone bedroom", "alt": "Bedroom with wood accents and generous window openings" },
+        { "file": "09.jpg", "pexelsId": 348614, "title": "Bedroom morning light", "alt": "Bedroom filled with gentle morning light through sheer curtains" },
+        { "file": "10.jpg", "pexelsId": 348615, "title": "Duplex bedroom upstairs", "alt": "Upper-floor bedroom with vertical glazing in an Indian duplex" }
+      ]
+    },
+    {
+      "slug": "commercial",
+      "title": "Office & Commercial",
+      "subtitle": "Office and Commercial Installations",
+      "description": "Showrooms, offices, and commercial facades in Bhubaneswar — structural glazing in real buildings.",
+      "photos": [
+        { "file": "01.jpg", "pexelsId": 34725823, "title": "Office tower glass facade", "alt": "Commercial building with structural glazing in an Indian city" },
+        { "file": "02.jpg", "pexelsId": 271743, "title": "Corporate lobby entrance", "alt": "Office lobby with floor-to-ceiling glass entrance" },
+        { "file": "03.jpg", "pexelsId": 5824923, "title": "Showroom frontage", "alt": "Retail showroom with large display windows" },
+        { "file": "04.jpg", "pexelsId": 5824924, "title": "Co-working space light", "alt": "Modern office interior with abundant natural light" },
+        { "file": "05.jpg", "pexelsId": 5824925, "title": "Clinic waiting area", "alt": "Healthcare clinic with calm glazing and daylight" },
+        { "file": "06.jpg", "pexelsId": 5824926, "title": "Restaurant street front", "alt": "Restaurant with glass storefront opening to the street" },
+        { "file": "07.jpg", "pexelsId": 5824927, "title": "Hotel lobby glazing", "alt": "Hospitality lobby with grand glass envelope" },
+        { "file": "08.jpg", "pexelsId": 1115800, "title": "Design studio workspace", "alt": "Architect studio with windows bringing in creative daylight" },
+        { "file": "09.jpg", "pexelsId": 4041392, "title": "Conference room views", "alt": "Corporate meeting room with city views through acoustic glass" },
+        { "file": "10.jpg", "pexelsId": 4041393, "title": "Institutional building", "alt": "Institutional facade with durable UPVC and aluminium glazing" }
+      ]
+    },
+    {
+      "slug": "luxury",
+      "title": "Luxury Home Ideas",
+      "subtitle": "Luxury Home Inspirations",
+      "description": "High-end residences where glazing, doors, and light create a premium everyday experience.",
+      "photos": [
+        { "file": "01.jpg", "pexelsId": 5824928, "title": "Double-height living luxury", "alt": "Luxury living room with double-height glazing and chandelier" },
+        { "file": "02.jpg", "pexelsId": 5824929, "title": "Premium villa interior", "alt": "High-end villa interior with seamless glass walls" },
+        { "file": "03.jpg", "pexelsId": 5824930, "title": "Marble and glass harmony", "alt": "Luxury home combining marble finishes with panoramic windows" },
+        { "file": "04.jpg", "pexelsId": 5824932, "title": "Penthouse panorama", "alt": "Penthouse living with unobstructed skyline views" },
+        { "file": "05.jpg", "pexelsId": 5824933, "title": "Designer dining room", "alt": "Formal dining room with statement windows and natural light" },
+        { "file": "06.jpg", "pexelsId": 5824934, "title": "Luxury bedroom suite", "alt": "Master suite with wraparound glazing and private terrace" },
+        { "file": "07.jpg", "pexelsId": 5824940, "title": "Home library with light", "alt": "Private library lined with tall windows and built-in shelving" },
+        { "file": "08.jpg", "pexelsId": 5824941, "title": "Infinity pool villa", "alt": "Luxury villa with glass walls facing an infinity pool" },
+        { "file": "09.jpg", "pexelsId": 5824942, "title": "Statement staircase light", "alt": "Grand staircase illuminated by vertical glazing shaft" },
+        { "file": "10.jpg", "pexelsId": 5824943, "title": "Entertainer's living space", "alt": "Open entertaining space with folding glass doors to the lawn" }
+      ]
+    },
+    {
+      "slug": "small-space",
+      "title": "Small Space Ideas",
+      "subtitle": "Space Saving Window Designs",
+      "description": "Clever window and door solutions for compact flats and duplexes — more light, less wasted space.",
+      "photos": [
+        { "file": "01.jpg", "pexelsId": 348616, "title": "Studio flat window trick", "alt": "Studio apartment feeling larger with a full-width window" },
+        { "file": "02.jpg", "pexelsId": 348617, "title": "Sliding door space saver", "alt": "Sliding UPVC door saving floor space in a compact room" },
+        { "file": "03.jpg", "pexelsId": 348618, "title": "Narrow room daylight", "alt": "Narrow room brightened with a strategically placed window" },
+        { "file": "04.jpg", "pexelsId": 348619, "title": "Compact kitchen window", "alt": "Small kitchen with awning window above the sink" },
+        { "file": "05.jpg", "pexelsId": 348620, "title": "Fold-away balcony door", "alt": "Folding door system opening a small flat to the balcony" },
+        { "file": "06.jpg", "pexelsId": 903171, "title": "1BHK living inspiration", "alt": "One-bedroom flat with maximised window area" },
+        { "file": "07.jpg", "pexelsId": 5824944, "title": "Under-stair window idea", "alt": "Utilitarian space under stairs lit by a small window" },
+        { "file": "08.jpg", "pexelsId": 5824945, "title": "Corner window expansion", "alt": "Corner window making a small room feel twice as large" },
+        { "file": "09.jpg", "pexelsId": 5824946, "title": "Built-in seat by window", "alt": "Window seat creating storage and seating in a compact bedroom" },
+        { "file": "10.jpg", "pexelsId": 5824947, "title": "Micro balcony upgrade", "alt": "Tiny balcony transformed with slim sliding doors" }
+      ]
+    }
+  ]
+}

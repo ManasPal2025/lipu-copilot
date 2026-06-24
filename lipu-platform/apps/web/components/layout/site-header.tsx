@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { Navigation } from '@/components/layout/navigation';
+import { CitySelector } from '@/components/layout/city-selector';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
 import { Container } from '@/components/layout/section';
 import { Button } from '@/components/ui/button';
@@ -73,6 +74,7 @@ export function SiteHeader() {
           />
 
           <div className="hidden items-center gap-2 lg:flex">
+            <CitySelector inverted={transparent} />
             <ThemeToggle inverted={transparent} />
             <Button
               variant="ghost"
@@ -88,6 +90,7 @@ export function SiteHeader() {
           </div>
 
           <div className="flex items-center gap-1 lg:hidden">
+            <CitySelector inverted={transparent} />
             <ThemeToggle inverted={transparent} />
             <button
               type="button"
@@ -120,7 +123,7 @@ export function SiteHeader() {
               <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
                 {[
                   { href: '/projects', label: 'Projects' },
-                  { href: '/gallery', label: 'Gallery' },
+                  { href: '/gallery', label: 'Design Ideas' },
                   { href: '/products', label: 'Products' },
                   { href: '/about', label: 'About' },
                   { href: '/contact', label: 'Contact' },
@@ -138,6 +141,7 @@ export function SiteHeader() {
                 ))}
               </nav>
               <div className="mt-auto flex flex-col gap-3 border-t border-border pt-6">
+                <CitySelector className="w-full max-w-none [&_select]:max-w-none" />
                 <Button variant="accent" size="lg" asChild>
                   <Link href="/contact#quote">Begin transformation</Link>
                 </Button>
