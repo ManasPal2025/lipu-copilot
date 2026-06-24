@@ -1,0 +1,166 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:${POSTGRES_VERSION:-15}
+    container_name: lipu-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-lipu_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-lipu_password_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-lipu_dev}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-lipu_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lipu-network
+
+  # Redis Cache
+  redis:
+    image: redis:${REDIS_VERSION:-7}-alpine
+    container_name: lipu-redis
+    command: redis-server --appendonly yes --requirepass ""
+    ports:
+      - "${REDIS_PORT:-6380}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "PING"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lipu-network
+
+  # PgAdmin Database GUI
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: lipu-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@lipu.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    depends_on:
+      - postgres
+    networks:
+      - lipu-network
+
+  # Qdrant Vector Database
+  qdrant:
+    image: qdrant/qdrant:${QDRANT_VERSION:-latest}
+    container_name: lipu-qdrant
+    environment:
+      QDRANT_API_KEY: ""
+    ports:
+      - "${QDRANT_PORT:-6333}:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+      - qdrant_snapshots:/qdrant/snapshots
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lipu-network
+
+  # LocalStack (AWS Simulation)
+  localstack:
+    image: localstack/localstack:latest
+    container_name: lipu-localstack
+    environment:
+      SERVICES: s3,sqs,sns
+      DEBUG: "0"
+      DATA_DIR: /tmp/localstack/data
+      LAMBDA_EXECUTOR: docker
+      DOCKER_HOST: unix:///var/run/docker.sock
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+    volumes:
+      - localstack_data:/tmp/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - lipu-network
+
+  # FastAPI Backend
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    container_name: lipu-api
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    environment:
+      APP_ENV: development
+      DEBUG: "true"
+      DATABASE_URL: postgresql://${POSTGRES_USER:-lipu_user}:${POSTGRES_PASSWORD:-lipu_password_dev}@postgres:5432/${POSTGRES_DB:-lipu_dev}
+      REDIS_URL: redis://redis:6379/0
+      QDRANT_URL: http://qdrant:6333
+      AWS_S3_ENDPOINT_URL: http://localstack:4566
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-minioadmin}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-minioadmin}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+      JWT_SECRET: ${JWT_SECRET:-your-super-secret-key-do-not-share}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      CLERK_SECRET_KEY: ${CLERK_SECRET_KEY}
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    volumes:
+      - ./apps/api:/app
+      - /app/__pycache__
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+    networks:
+      - lipu-network
+
+  # Next.js Frontend
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    container_name: lipu-web
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://api:8000/api/v1
+      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+      NODE_ENV: development
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    volumes:
+      - ./apps/web:/app
+      - /app/.next
+      - /app/node_modules
+    depends_on:
+      - api
+    networks:
+      - lipu-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  qdrant_data:
+    driver: local
+  qdrant_snapshots:
+    driver: local
+  localstack_data:
+    driver: local
+
+networks:
+  lipu-network:
+    driver: bridge

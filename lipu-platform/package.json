@@ -1,0 +1,32 @@
+{
+  "name": "lipu-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "LIPU - AI-powered UPVC Windows & Doors E-commerce Platform",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "test": "turbo run test",
+    "format": "turbo run format",
+    "format:check": "turbo run format:check",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "web:dev": "turbo run dev --filter=web",
+    "api:dev": "turbo run dev --filter=api",
+    "web:build": "turbo run build --filter=web",
+    "api:build": "turbo run build --filter=api"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}

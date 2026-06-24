@@ -1,0 +1,46 @@
+name: Lint
+on:
+  push:
+    branches:
+      - main
+      - staging
+      - develop
+  pull_request:
+    branches:
+      - main
+      - staging
+      - develop
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    name: Frontend Lint (ESLint + TypeScript)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint --filter=web
+      - run: npm run type-check --filter=web
+      - run: npm run format:check --filter=web
+
+  backend:
+    runs-on: ubuntu-latest
+    name: Backend Lint (Black + Flake8 + MyPy)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: |
+          cd apps/api
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+      - run: |
+          cd apps/api
+          black --check .
+          flake8 .
+          mypy .

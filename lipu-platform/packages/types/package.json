@@ -1,0 +1,20 @@
+{
+  "name": "@lipu/types",
+  "version": "0.1.0",
+  "description": "LIPU Platform - Shared TypeScript Types",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}
