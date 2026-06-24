@@ -1,1 +1,86 @@
-/* Global styles - Placeholder */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 98%;
+    --foreground: 24 10% 10%;
+    --card: 40 20% 99%;
+    --card-foreground: 24 10% 10%;
+    --primary: 24 10% 10%;
+    --primary-foreground: 40 20% 98%;
+    --secondary: 30 8% 92%;
+    --secondary-foreground: 24 10% 15%;
+    --muted: 30 8% 94%;
+    --muted-foreground: 24 5% 45%;
+    --accent: 32 28% 42%;
+    --accent-foreground: 40 20% 98%;
+    --border: 30 10% 88%;
+    --input: 30 10% 88%;
+    --ring: 32 28% 42%;
+    --radius: 0.25rem;
+  }
+
+  .dark {
+    --background: 24 10% 6%;
+    --foreground: 40 15% 96%;
+    --card: 24 10% 8%;
+    --card-foreground: 40 15% 96%;
+    --primary: 40 15% 96%;
+    --primary-foreground: 24 10% 8%;
+    --secondary: 24 8% 14%;
+    --secondary-foreground: 40 15% 92%;
+    --muted: 24 8% 16%;
+    --muted-foreground: 30 8% 62%;
+    --accent: 32 28% 52%;
+    --accent-foreground: 24 10% 8%;
+    --border: 24 8% 18%;
+    --input: 24 8% 18%;
+    --ring: 32 28% 52%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .image-placeholder {
+    @apply relative overflow-hidden bg-stone-200;
+    background-image: linear-gradient(
+      135deg,
+      hsl(30 10% 88%) 0%,
+      hsl(30 8% 82%) 50%,
+      hsl(32 12% 76%) 100%
+    );
+  }
+
+  .dark .image-placeholder {
+    background-image: linear-gradient(
+      135deg,
+      hsl(24 8% 16%) 0%,
+      hsl(24 10% 12%) 50%,
+      hsl(24 8% 10%) 100%
+    );
+  }
+}

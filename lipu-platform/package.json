@@ -20,7 +20,9 @@
     "web:dev": "turbo run dev --filter=web",
     "api:dev": "turbo run dev --filter=api",
     "web:build": "turbo run build --filter=web",
-    "api:build": "turbo run build --filter=api"
+    "api:build": "turbo run build --filter=api",
+    "infra:up": "docker compose -f docker-compose.infra.yml up -d",
+    "infra:down": "docker compose -f docker-compose.infra.yml down"
   },
   "devDependencies": {
     "turbo": "^1.10.0"
@@ -28,5 +30,8 @@
   "engines": {
     "node": ">=20.0.0",
     "npm": ">=10.0.0"
+  },
+  "dependencies": {
+    "next-themes": "^0.4.6"
   }
 }

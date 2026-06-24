@@ -1,0 +1,51 @@
+# Infrastructure only — run API and Web natively on the host for faster iteration.
+# Usage: docker compose -f docker-compose.infra.yml up -d
+
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:${POSTGRES_VERSION:-15}
+    container_name: lipu-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-lipu_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-lipu_password_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-lipu_dev}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-lipu_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lipu-network
+
+  redis:
+    image: redis:${REDIS_VERSION:-7}-alpine
+    container_name: lipu-redis
+    command: redis-server --appendonly yes
+    ports:
+      - "${REDIS_PORT:-6380}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "PING"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - lipu-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  lipu-network:
+    driver: bridge
