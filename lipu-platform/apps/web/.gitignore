@@ -4,3 +4,10 @@ build/
 dist/
 coverage/
 .turbo/
+node_modules/
+
+_vercel_sim/
+_vercel_sim2/
+
+.env
+.env.local

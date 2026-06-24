@@ -1,18 +1,27 @@
 import type { NextConfig } from 'next';
 import path from 'node:path';
 
+const projectRoot = __dirname;
+const monorepoRoot = path.join(projectRoot, '../..');
+const isVercel = process.env.VERCEL === '1';
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   output: 'standalone',
-  // Trace dependencies from monorepo root (required for workspace installs)
-  outputFileTracingRoot: path.join(__dirname, '../..'),
+  // Monorepo tracing for Docker; skip on Vercel (root dir is apps/web, parent paths need dashboard toggle)
+  ...(!isVercel ? { outputFileTracingRoot: monorepoRoot } : {}),
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.join(__dirname),
+      '@': projectRoot,
     };
     return config;
+  },
+  turbopack: {
+    resolveAlias: {
+      '@': projectRoot,
+    },
   },
   images: {
     remotePatterns: [
