@@ -7,6 +7,13 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   // Trace dependencies from monorepo root (required for workspace installs)
   outputFileTracingRoot: path.join(__dirname, '../..'),
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.join(__dirname),
+    };
+    return config;
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'cdn.lipu.com' },
