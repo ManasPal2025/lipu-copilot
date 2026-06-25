@@ -1,3 +1,5 @@
+# Next.js
+
 .next/
 out/
 build/
@@ -6,8 +8,38 @@ coverage/
 .turbo/
 node_modules/
 
+# Vercel
+
 _vercel_sim/
 _vercel_sim2/
 
+# Environment
+
 .env
 .env.local
+
+# TypeScript
+
+*.tsbuildinfo
+
+# Python
+
+**pycache**/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# RAG / Chroma
+
+lipu-platform/rag/data/
+chroma/
+
+# Logs
+
+*.log
+
+# OS
+
+.DS_Store
+Thumbs.db

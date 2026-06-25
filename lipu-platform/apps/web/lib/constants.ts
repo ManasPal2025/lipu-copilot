@@ -4,6 +4,9 @@ export const SITE_DESCRIPTION =
   'Premium UPVC windows and doors crafted for architectural transformation. Experience your home before you build it.';
 
 export const NAV_LINKS = [
+  { href: '/wizard', label: 'Find Ideas' },
+  { href: '/estimate', label: 'Get Estimate' },
+  { href: '/consult', label: 'Ask LIPU' },
   { href: '/projects', label: 'Projects' },
   { href: '/gallery', label: 'Design Ideas' },
   { href: '/products', label: 'Products' },

@@ -1,0 +1,80 @@
+{
+  "currency": "INR",
+  "currencySymbol": "₹",
+  "dimensionUnit": "feet",
+  "areaUnit": "sq.ft",
+  "gstRate": 0.18,
+  "disclaimer": "Indicative estimate only. Final pricing depends on site survey, frame colour, hardware, and installation complexity in Bhubaneswar and Odisha.",
+  "installation": {
+    "flatRate": 2500,
+    "perSqFt": 85,
+    "label": "Installation & sealing"
+  },
+  "rangeVariance": {
+    "minFactor": 0.9,
+    "maxFactor": 1.15
+  },
+  "windowTypes": [
+    {
+      "id": "sliding",
+      "label": "Sliding Window",
+      "description": "Ideal for balconies and wide openings",
+      "baseRatePerSqFt": 620,
+      "productSlug": "horizon-sliding"
+    },
+    {
+      "id": "casement",
+      "label": "Casement Window",
+      "description": "Best for kitchens and bedrooms needing ventilation",
+      "baseRatePerSqFt": 580,
+      "productSlug": "atelier-casement"
+    },
+    {
+      "id": "fixed",
+      "label": "Fixed Window",
+      "description": "Maximum glass area for views and daylight",
+      "baseRatePerSqFt": 520,
+      "productSlug": "skyline-fixed"
+    },
+    {
+      "id": "french-door",
+      "label": "French Door",
+      "description": "Statement entrance or garden access",
+      "baseRatePerSqFt": 950,
+      "productSlug": "grand-entrance"
+    },
+    {
+      "id": "sliding-door",
+      "label": "Sliding Door",
+      "description": "Floor-to-ceiling connection to terrace or garden",
+      "baseRatePerSqFt": 880,
+      "productSlug": "garden-portal"
+    }
+  ],
+  "glassTypes": [
+    {
+      "id": "single",
+      "label": "Single Glazed",
+      "description": "Standard float glass for shaded rooms",
+      "modifier": 1
+    },
+    {
+      "id": "double",
+      "label": "Double Glazed",
+      "description": "Insulated glass for heat and noise control",
+      "modifier": 1.28
+    },
+    {
+      "id": "triple",
+      "label": "Triple Glazed",
+      "description": "Maximum thermal and acoustic performance",
+      "modifier": 1.52
+    },
+    {
+      "id": "laminated",
+      "label": "Laminated Safety Glass",
+      "description": "Security and sound reduction for street-facing rooms",
+      "modifier": 1.35
+    }
+  ]
+}

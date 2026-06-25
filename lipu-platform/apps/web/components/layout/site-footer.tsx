@@ -43,6 +43,11 @@ export function SiteFooter() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/support" className="transition-colors hover:text-stone-50">
+                    Customer support
+                  </Link>
+                </li>
+                <li>
                   <Link href="/contact#quote" className="transition-colors hover:text-stone-50">
                     Request a quote
                   </Link>
