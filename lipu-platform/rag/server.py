@@ -13,6 +13,7 @@ import argparse
 import json
 import logging
 import sys
+import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
@@ -29,12 +30,38 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+resources_ready = False
+startup_error: BaseException | None = None
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Persistent RAG HTTP server")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8100)
     return parser.parse_args()
+
+
+def load_resources_background() -> None:
+    global resources_ready, startup_error
+
+    from ai_mode import log_ai_mode
+    from config import AI_MODE
+    from resources import initialize_resources
+
+    try:
+        log_ai_mode()
+        logger.info("Loading RAG resources at startup (AI_MODE=%s)...", AI_MODE)
+        init = initialize_resources()
+        logger.info(
+            "Startup complete — embedding=%.0fms chroma=%.0fms total=%.0fms",
+            init.embedding_model_ms,
+            init.chroma_init_ms,
+            init.total_ms,
+        )
+        resources_ready = True
+    except Exception as exc:
+        startup_error = exc
+        logger.exception("Background resource loading failed")
 
 
 class RagHandler(BaseHTTPRequestHandler):
@@ -55,6 +82,26 @@ class RagHandler(BaseHTTPRequestHandler):
         parsed = urlparse(self.path)
 
         if parsed.path == "/health":
+            if startup_error is not None:
+                self._send_json(
+                    500,
+                    {
+                        "status": "failed",
+                        "error": str(startup_error),
+                    },
+                )
+                return
+
+            if not resources_ready:
+                self._send_json(
+                    200,
+                    {
+                        "status": "starting",
+                        "resources_loaded": False,
+                    },
+                )
+                return
+
             from config import CHROMA_PERSIST_DIR, COLLECTION_NAME
             from resources import get_init_timings, get_vector_store, resources_initialized
 
@@ -83,6 +130,10 @@ class RagHandler(BaseHTTPRequestHandler):
         parsed = urlparse(self.path)
         if parsed.path != "/query":
             self._send_json(404, {"error": "Not found"})
+            return
+
+        if not resources_ready:
+            self._send_json(503, {"error": "RAG resources still loading"})
             return
 
         api_received = time.perf_counter()
@@ -134,23 +185,14 @@ class RagHandler(BaseHTTPRequestHandler):
 
 
 def main() -> int:
-    from ai_mode import log_ai_mode
-    from config import AI_MODE
-    from resources import initialize_resources
-
     args = parse_args()
-    log_ai_mode()
-
-    logger.info("Loading RAG resources at startup (AI_MODE=%s)...", AI_MODE)
-    init = initialize_resources()
-    logger.info(
-        "Startup complete — embedding=%.0fms chroma=%.0fms total=%.0fms",
-        init.embedding_model_ms,
-        init.chroma_init_ms,
-        init.total_ms,
-    )
 
     httpd = ThreadingHTTPServer((args.host, args.port), RagHandler)
+    threading.Thread(
+        target=load_resources_background,
+        daemon=True,
+    ).start()
+
     logger.info("RAG server listening on http://%s:%s", args.host, args.port)
     print(f"[RAG SERVER] http://{args.host}:{args.port}", file=sys.stderr, flush=True)
 
