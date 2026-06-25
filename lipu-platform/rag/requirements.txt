@@ -1,3 +1,9 @@
+# LIPU RAG server — production dependencies (Railway / local venv)
+# Python 3.11 recommended (see runtime.txt)
+#
+# Memory: allocate >= 2 GB RAM on Railway (BGE-small-en-v1.5 + Chroma).
+# First cold start downloads ~130 MB embedding model from Hugging Face.
+
 langchain>=0.3.0
 langchain-core>=0.3.0
 langchain-community>=0.3.0
@@ -7,5 +13,6 @@ langchain-chroma>=0.2.0
 langchain-google-genai>=2.0.0
 chromadb>=0.5.0
 sentence-transformers>=3.0.0
+huggingface-hub>=0.23.0
 pyyaml>=6.0
 python-dotenv>=1.0.0

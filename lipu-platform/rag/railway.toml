@@ -1,0 +1,15 @@
+# Railway config for the LIPU RAG HTTP server (lipu-platform/rag).
+# Set the service Root Directory to: lipu-platform/rag
+
+[build]
+builder = "RAILPACK"
+# Install Python deps only — no separate build step required.
+buildCommand = "pip install -r requirements.txt"
+
+[deploy]
+startCommand = "python server.py --host 0.0.0.0 --port $PORT"
+healthcheckPath = "/health"
+# BGE model + Chroma init can take 60–120s on cold start.
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5

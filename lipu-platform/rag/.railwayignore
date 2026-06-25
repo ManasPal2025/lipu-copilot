@@ -1,0 +1,11 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.log
+retrieval-test-results.txt
+query_err.txt
+profile_request.py
+benchmark_ai.py
+debug_retrieve.py
