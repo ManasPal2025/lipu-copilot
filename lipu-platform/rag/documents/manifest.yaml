@@ -1,0 +1,99 @@
+# RAG knowledge base registry
+version: 2
+default_language: en
+default_audience: homeowner
+default_regions:
+  - bhubaneswar
+  - cuttack
+  - puri
+  - odisha
+
+categories:
+  faq:
+    description: Customer FAQs — product, climate, pricing, service (228+ questions)
+    path: faq
+    document_type: faq
+    chunk_strategy: section
+    priority: 10
+
+  catalog:
+    description: UPVC product profiles and application guidance
+    path: catalog
+    document_type: product_brochure
+    chunk_strategy: section
+    priority: 9
+
+  odisha-climate:
+    description: Bhubaneswar and Odisha climate-specific guidance
+    path: odisha-climate
+    document_type: policy
+    chunk_strategy: section
+    priority: 9
+
+  glass:
+    description: Glazing types and selection for tropical/coastal conditions
+    path: glass
+    document_type: policy
+    chunk_strategy: section
+    priority: 8
+
+  hardware:
+    description: Locks, hinges, rollers, and multi-point systems
+    path: hardware
+    document_type: policy
+    chunk_strategy: section
+    priority: 7
+
+  pricing-guide:
+    description: Budget tiers and cost factors for Odisha projects
+    path: pricing-guide
+    document_type: policy
+    chunk_strategy: section
+    priority: 8
+
+  installation:
+    description: Site survey, fitting, monsoon readiness, handover
+    path: installation
+    document_type: installation_manual
+    chunk_strategy: section
+    priority: 7
+
+  warranty:
+    description: Coverage, exclusions, and claim process
+    path: warranty
+    document_type: warranty
+    chunk_strategy: section
+    priority: 6
+
+  design-inspiration:
+    description: Room and building-type design guidance for homeowners
+    path: design-inspiration
+    document_type: policy
+    chunk_strategy: section
+    priority: 6
+
+  service-support:
+    description: After-sales service, leakage, and complaint handling
+    path: service-support
+    document_type: policy
+    chunk_strategy: section
+    priority: 8
+
+vector_store:
+  provider: chromadb
+  collection: lipu_knowledge
+  persist_path: ../rag/data/chroma
+  embedding_model: BAAI/bge-small-en-v1.5
+  distance: Cosine
+
+product_slugs:
+  - sliding-windows
+  - casement-windows
+  - fixed-windows
+  - combination-windows
+  - french-windows
+  - sliding-doors
+  - french-doors
+  - lift-and-slide-doors
+  - balcony-enclosures
+  - ventilators

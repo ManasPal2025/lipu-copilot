@@ -2,14 +2,35 @@
 
 from __future__ import annotations
 
+import logging
 import os
 from pathlib import Path
+
+logger = logging.getLogger(__name__)
 
 RAG_ROOT = Path(__file__).resolve().parent
 PLATFORM_ROOT = RAG_ROOT.parent
 
-DOCUMENTS_DIR = PLATFORM_ROOT / "documents"
 CHROMA_PERSIST_DIR = RAG_ROOT / "data" / "chroma"
+
+
+def resolve_documents_dir() -> Path:
+    """Prefer rag/documents (Railway deploy root); fall back to monorepo ../documents."""
+    local_deployment = RAG_ROOT / "documents"
+    monorepo = PLATFORM_ROOT / "documents"
+
+    if local_deployment.is_dir():
+        logger.info(
+            "[DOCS] Using local deployment documents path: %s",
+            local_deployment.resolve(),
+        )
+        return local_deployment
+
+    logger.info("[DOCS] Using monorepo documents path: ../documents")
+    return monorepo
+
+
+DOCUMENTS_DIR = resolve_documents_dir()
 
 COLLECTION_NAME = "lipu_knowledge"
 EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
