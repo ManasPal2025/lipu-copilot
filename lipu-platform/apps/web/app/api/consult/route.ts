@@ -46,7 +46,7 @@ export async function POST(request: Request) {
       answer: GENERIC_ANSWER,
       fallback: true,
       confidence: 'Low',
-      mode: 'retrieval',
+      mode: 'fallback',
       sources: [],
     });
   }

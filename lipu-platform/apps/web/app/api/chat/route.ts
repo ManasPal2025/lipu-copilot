@@ -53,7 +53,7 @@ export async function POST(request: Request) {
       answer: GENERIC_ANSWER,
       sources: [],
       confidence: 'Low',
-      mode: 'retrieval',
+      mode: 'fallback',
     });
   }
 }

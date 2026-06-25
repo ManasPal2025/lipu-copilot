@@ -4,7 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export type ConfidenceLevel = 'High' | 'Medium' | 'Low';
-export type AIMode = 'retrieval' | 'gemini';
+export type AIConfigMode = 'retrieval' | 'gemini';
+export type AIMode = 'retrieval' | 'gemini' | 'fallback' | 'disabled';
 
 export type ChatSource = {
   name: string;
@@ -28,10 +29,51 @@ export type ConsultResponse = {
   sources: ChatSource[];
 };
 
+export type AIConfig = {
+  enabled: boolean;
+  mode: AIConfigMode;
+};
+
 const GENERIC_ANSWER =
   "We're having trouble answering right now. Please try again in a moment, or request a consultation and our team will help you directly.";
 
-/** Resolved once at module load — not dependent on process.cwd() alone. */
+const CONSULTATION_FALLBACK_ANSWER =
+  'AI consultant is temporarily unavailable. Please request a free consultation and our team will assist you.';
+
+function isProductionEnv(): boolean {
+  return process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+}
+
+function parseBool(value: string | undefined, defaultValue: boolean): boolean {
+  if (value === undefined || value.trim() === '') {
+    return defaultValue;
+  }
+  const normalized = value.trim().toLowerCase();
+  if (normalized === 'true' || normalized === '1' || normalized === 'yes') {
+    return true;
+  }
+  if (normalized === 'false' || normalized === '0' || normalized === 'no') {
+    return false;
+  }
+  return defaultValue;
+}
+
+/** Feature flags — local defaults AI on; production defaults AI off when unset. */
+export function resolveAIConfig(): AIConfig {
+  const enabled = parseBool(process.env.AI_ENABLED, !isProductionEnv());
+  const rawMode = process.env.AI_MODE?.trim().toLowerCase();
+  const mode: AIConfigMode = rawMode === 'gemini' ? 'gemini' : 'retrieval';
+  return { enabled, mode };
+}
+
+function logEnv(ai: AIConfig): void {
+  console.log(`[RAG] ENV=${isProductionEnv() ? 'production' : 'development'}`);
+  console.log(`[RAG] AI_ENABLED=${ai.enabled}`);
+  console.log(`[RAG] AI_MODE=${ai.mode}`);
+  console.log('[RAG] RAG_SERVER_URL=', process.env.RAG_SERVER_URL ?? '(not set)');
+}
+
+/** Resolved lazily — only needed for local subprocess fallback. */
 function resolveRagRoot(): string {
   const fromEnv = process.env.RAG_ROOT?.trim();
   if (fromEnv && existsSync(path.join(fromEnv, 'server.py'))) {
@@ -62,23 +104,30 @@ function resolveRagRoot(): string {
   return fromFile;
 }
 
-function resolveRagServerUrl(): string {
+let ragRootCache: string | null = null;
+
+function getRagRoot(): string {
+  if (!ragRootCache) {
+    ragRootCache = resolveRagRoot();
+  }
+  return ragRootCache;
+}
+
+function resolveRagServerUrl(): string | null {
   const fromEnv = process.env.RAG_SERVER_URL?.trim();
   if (fromEnv) {
     return fromEnv.replace(/\/$/, '');
   }
+  if (isProductionEnv()) {
+    return null;
+  }
   return 'http://127.0.0.1:8100';
 }
 
-const RAG_ROOT = resolveRagRoot();
-const RAG_SERVER_URL = resolveRagServerUrl();
-const RAG_QUERY_URL = `${RAG_SERVER_URL}/query`;
-const RAG_HEALTH_URL = `${RAG_SERVER_URL}/health`;
-
-function pythonExecutable(): string {
+function pythonExecutable(ragRoot: string): string {
   return process.platform === 'win32'
-    ? path.join(RAG_ROOT, '.venv', 'Scripts', 'python.exe')
-    : path.join(RAG_ROOT, '.venv', 'bin', 'python');
+    ? path.join(ragRoot, '.venv', 'Scripts', 'python.exe')
+    : path.join(ragRoot, '.venv', 'bin', 'python');
 }
 
 function normalizeConfidence(value: unknown): ConfidenceLevel {
@@ -91,6 +140,12 @@ function normalizeConfidence(value: unknown): ConfidenceLevel {
 function normalizeMode(value: unknown): AIMode {
   if (value === 'gemini') {
     return 'gemini';
+  }
+  if (value === 'fallback') {
+    return 'fallback';
+  }
+  if (value === 'disabled') {
+    return 'disabled';
   }
   return 'retrieval';
 }
@@ -137,18 +192,42 @@ function genericResponse(question: string): ConsultResponse {
     answer: GENERIC_ANSWER,
     fallback: true,
     confidence: 'Low',
-    mode: 'retrieval',
+    mode: 'fallback',
     sources: [],
   };
 }
 
-async function runRagQueryHttp(question: string): Promise<ConsultResponse> {
-  console.log('[RAG QUERY] URL =', RAG_SERVER_URL);
-  console.log('[RAG QUERY] Endpoint = POST /query');
-  console.log('[RAG QUERY] Exact URL =', RAG_QUERY_URL);
-  console.log('[RAG QUERY] Calling RAG server');
+function disabledResponse(question: string): ConsultResponse {
+  console.log('[RAG] AI disabled - returning fallback');
+  return {
+    question,
+    answer: CONSULTATION_FALLBACK_ANSWER,
+    fallback: true,
+    confidence: 'Low',
+    mode: 'disabled',
+    sources: [],
+  };
+}
 
-  const response = await fetch(RAG_QUERY_URL, {
+function productionFallbackResponse(question: string): ConsultResponse {
+  console.log('[RAG] Production fallback activated');
+  return {
+    question,
+    answer: CONSULTATION_FALLBACK_ANSWER,
+    fallback: true,
+    confidence: 'Low',
+    mode: 'fallback',
+    sources: [],
+  };
+}
+
+async function runRagQueryHttp(serverUrl: string, question: string): Promise<ConsultResponse> {
+  const queryUrl = `${serverUrl}/query`;
+
+  console.log('[RAG] Using HTTP endpoint');
+  console.log('[RAG QUERY] Exact URL =', queryUrl);
+
+  const response = await fetch(queryUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ question }),
@@ -168,14 +247,20 @@ async function runRagQueryHttp(question: string): Promise<ConsultResponse> {
 }
 
 function runRagQuerySpawn(question: string): Promise<ConsultResponse> {
-  console.log('[RAG QUERY] Fallback path = subprocess spawn');
-  console.log('[RAG QUERY] RAG_ROOT =', RAG_ROOT);
-  console.log('[RAG QUERY] Python =', pythonExecutable());
+  if (isProductionEnv()) {
+    return Promise.resolve(productionFallbackResponse(question));
+  }
+
+  console.log('[RAG] Using subprocess fallback');
+
+  const ragRoot = getRagRoot();
+  const python = pythonExecutable(ragRoot);
+  const script = path.join(ragRoot, 'query_json.py');
+
+  console.log('[RAG QUERY] RAG_ROOT =', ragRoot);
+  console.log('[RAG QUERY] Python =', python);
 
   return new Promise((resolve) => {
-    const python = pythonExecutable();
-    const script = path.join(RAG_ROOT, 'query_json.py');
-
     if (!existsSync(python)) {
       console.error('[RAG QUERY] Error = Python executable not found at', python);
       resolve(genericResponse(question));
@@ -183,7 +268,7 @@ function runRagQuerySpawn(question: string): Promise<ConsultResponse> {
     }
 
     const child = spawn(python, [script, question], {
-      cwd: RAG_ROOT,
+      cwd: ragRoot,
       env: process.env,
       windowsHide: true,
     });
@@ -227,26 +312,59 @@ function runRagQuerySpawn(question: string): Promise<ConsultResponse> {
   });
 }
 
-export async function runRagQuery(question: string): Promise<ConsultResponse> {
-  console.log('[RAG QUERY] RAG_ROOT =', RAG_ROOT);
-  console.log('[RAG QUERY] process.cwd() =', process.cwd());
-  console.log('[RAG QUERY] RAG_SERVER_URL env =', JSON.stringify(process.env.RAG_SERVER_URL ?? null));
+async function runRagQueryWithBackend(question: string): Promise<ConsultResponse> {
+  const serverUrl = resolveRagServerUrl();
+
+  if (isProductionEnv()) {
+    if (!serverUrl) {
+      return productionFallbackResponse(question);
+    }
+
+    try {
+      return await runRagQueryHttp(serverUrl, question);
+    } catch (error) {
+      console.error('[RAG QUERY] Error =', error);
+      return productionFallbackResponse(question);
+    }
+  }
+
+  const localUrl = serverUrl ?? 'http://127.0.0.1:8100';
 
   try {
-    return await runRagQueryHttp(question);
+    return await runRagQueryHttp(localUrl, question);
   } catch (error) {
     console.error('[RAG QUERY] Error =', error);
-    console.log('[RAG QUERY] HTTP failed — executing subprocess fallback');
     return runRagQuerySpawn(question);
   }
 }
 
+export async function runRagQuery(question: string): Promise<ConsultResponse> {
+  const ai = resolveAIConfig();
+  logEnv(ai);
+
+  if (!ai.enabled) {
+    return disabledResponse(question);
+  }
+
+  if (ai.mode === 'gemini') {
+    console.log('[RAG] Gemini mode');
+  } else {
+    console.log('[RAG] Retrieval mode');
+  }
+
+  return runRagQueryWithBackend(question);
+}
+
 /** For debugging — direct RAG server URLs. */
 export function getRagServerEndpoints() {
+  const ai = resolveAIConfig();
+  const serverUrl = ai.enabled ? resolveRagServerUrl() : null;
   return {
-    health: RAG_HEALTH_URL,
-    query: RAG_QUERY_URL,
-    serverBase: RAG_SERVER_URL,
-    ragRoot: RAG_ROOT,
+    health: serverUrl ? `${serverUrl}/health` : null,
+    query: serverUrl ? `${serverUrl}/query` : null,
+    serverBase: serverUrl,
+    ragRoot: isProductionEnv() || !ai.enabled ? null : getRagRoot(),
+    aiEnabled: ai.enabled,
+    aiMode: ai.mode,
   };
 }
