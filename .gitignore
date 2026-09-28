@@ -1,0 +1,8 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Design references, temporary screenshots, and raw asset staging
+Phase2_Assets/
+Ecotech_Website_Assets/

@@ -16,7 +16,7 @@ export function ImageZoom({ children, className, zoomClassName }: ImageZoomProps
     <div className={cn('group/image overflow-hidden', className)}>
       <div
         className={cn(
-          'h-full w-full transition-transform duration-700 ease-out group-hover/image:scale-[1.04]',
+          'h-full w-full transition-transform duration-700 ease-out group-hover/image:scale-[1.02]',
           zoomClassName,
         )}
       >

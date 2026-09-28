@@ -5,12 +5,17 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, Query, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.dependencies.auth import require_staff_access
 from app.dependencies.database import get_session
 from app.schemas.organization import OrganizationCreate, OrganizationRead, OrganizationUpdate
 from app.services.organization import OrganizationService
 
 
-router = APIRouter(prefix="/organizations", tags=["organizations"])
+router = APIRouter(
+    prefix="/organizations",
+    tags=["organizations"],
+    dependencies=[Depends(require_staff_access)],
+)
 
 
 def get_organization_service(session: AsyncSession = Depends(get_session)) -> OrganizationService:

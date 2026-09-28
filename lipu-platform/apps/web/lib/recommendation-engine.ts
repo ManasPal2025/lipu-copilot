@@ -199,7 +199,7 @@ export function getRecommendation(answers: WizardAnswers): WizardRecommendation 
     reasons: buildReasons(top, answers),
     inspirationPhotos,
     galleryCategory,
-    galleryHref: `/gallery#${gallerySlug}`,
+    galleryHref: '/gallery',
   };
 }
 

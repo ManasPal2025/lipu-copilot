@@ -39,6 +39,7 @@ class Settings(BaseSettings):
     database_pool_timeout: int = 30
     database_pool_recycle: int = 1800
     database_echo: bool = False
+    database_ssl: bool = False
 
     redis_url: RedisDsn = Field(default="redis://localhost:6379/0")
     redis_decode_responses: bool = True
@@ -58,7 +59,47 @@ class Settings(BaseSettings):
 
     request_id_header: str = "X-Request-ID"
 
-    @field_validator("cors_origins", "cors_allow_methods", "cors_allow_headers", "allowed_hosts", mode="before")
+    email_enabled: bool = False
+    email_provider: Literal["smtp"] = "smtp"
+    email_from: str = ""
+    email_from_name: str = "Ecotech"
+    ecotech_notification_email: str = ""
+    email_smtp_host: str = ""
+    email_smtp_port: int = 587
+    email_smtp_username: str = ""
+    email_smtp_password: str = ""
+    email_smtp_use_tls: bool = True
+
+    clerk_secret_key: str = ""
+    clerk_authorized_parties: list[str] = Field(default_factory=lambda: ["http://localhost:3000"])
+
+    storage_enabled: bool = False
+    storage_provider: Literal["s3"] = "s3"
+    storage_bucket: str = ""
+    storage_region: str = ""
+    storage_endpoint: str = ""
+    storage_access_key: str = ""
+    storage_secret_key: str = ""
+    storage_public_base_url: str = ""
+    storage_signed_url_ttl_seconds: int = 900
+    transform_max_upload_mb: int = 10
+
+    image_generation_enabled: bool = False
+    image_generation_provider: Literal["openai"] = "openai"
+    openai_api_key: str = ""
+    openai_image_model: str = "gpt-image-2"
+    openai_image_size: str = "auto"
+    openai_image_quality: str = "medium"
+    openai_image_timeout_seconds: int = 120
+
+    @field_validator(
+        "cors_origins",
+        "cors_allow_methods",
+        "cors_allow_headers",
+        "allowed_hosts",
+        "clerk_authorized_parties",
+        mode="before",
+    )
     @classmethod
     def parse_csv_list(cls, value: str | list[str]) -> list[str]:
         if isinstance(value, str):

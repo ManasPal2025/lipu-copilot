@@ -5,6 +5,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, Query, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.dependencies.auth import require_staff_access
 from app.dependencies.database import get_session
 from app.schemas.pagination import Page
 from app.schemas.product import (
@@ -21,7 +22,11 @@ from app.schemas.product_variant import ProductVariantCreate, ProductVariantCrea
 from app.services.product_catalog import ProductCatalogService
 
 
-router = APIRouter(prefix="/catalog", tags=["product-catalog"])
+router = APIRouter(
+    prefix="/catalog",
+    tags=["product-catalog"],
+    dependencies=[Depends(require_staff_access)],
+)
 
 
 def get_product_catalog_service(session: AsyncSession = Depends(get_session)) -> ProductCatalogService:

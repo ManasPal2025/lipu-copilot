@@ -6,6 +6,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, Query, Response, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.dependencies.auth import require_staff_access
 from app.dependencies.database import get_session
 from app.schemas.pagination import Page
 from app.schemas.quote import (
@@ -24,7 +25,11 @@ from app.schemas.quote import (
 from app.services.quote import QuoteService
 
 
-router = APIRouter(prefix="/quotes", tags=["quotes"])
+router = APIRouter(
+    prefix="/quotes",
+    tags=["quotes"],
+    dependencies=[Depends(require_staff_access)],
+)
 
 
 def get_quote_service(session: AsyncSession = Depends(get_session)) -> QuoteService:

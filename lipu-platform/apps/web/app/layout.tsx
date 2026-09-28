@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, Inter } from 'next/font/google';
 
+import { ClerkProvider } from '@clerk/nextjs';
+
+import { ClerkAccountProvider } from '@/components/providers/account-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
+import { isClerkConfigured } from '@/lib/clerk';
 import '@/styles/globals.css';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from '@/lib/constants';
 
@@ -27,11 +31,11 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   keywords: [
     'UPVC windows',
-    'home transformation',
+    'Ecotech Window Systems',
     'premium doors',
     'architectural glazing',
-    'LIPU',
-    'luxury windows India',
+    'Odisha',
+    'Bhubaneswar',
   ],
   openGraph: {
     type: 'website',
@@ -56,7 +60,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${sans.variable} ${display.variable}`} suppressHydrationWarning>
       <body className="min-h-screen bg-background font-sans antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        {isClerkConfigured() ? (
+          <ClerkProvider signInUrl="/sign-in" signUpUrl="/sign-up" afterSignOutUrl="/">
+            <ThemeProvider>
+              <ClerkAccountProvider>{children}</ClerkAccountProvider>
+            </ThemeProvider>
+          </ClerkProvider>
+        ) : (
+          <ThemeProvider>{children}</ThemeProvider>
+        )}
       </body>
     </html>
   );

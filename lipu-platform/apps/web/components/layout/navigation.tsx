@@ -14,6 +14,13 @@ interface NavigationProps {
   onNavigate?: () => void;
 }
 
+function isActivePath(pathname: string, href: string): boolean {
+  if (href === '/') {
+    return pathname === '/';
+  }
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Navigation({
   className,
   linkClassName,
@@ -24,16 +31,16 @@ export function Navigation({
   const pathname = usePathname();
 
   return (
-    <nav className={cn('flex items-center gap-8', className)} aria-label="Main navigation">
+    <nav className={cn('flex items-center gap-7 xl:gap-9', className)} aria-label="Main navigation">
       {NAV_LINKS.map((link) => {
-        const isActive = pathname === link.href;
+        const isActive = isActivePath(pathname, link.href);
         return (
           <Link
             key={link.href}
             href={link.href}
             onClick={onNavigate}
             className={cn(
-              'text-sm tracking-wide transition-colors hover:text-foreground',
+              'text-[13px] tracking-[0.04em] transition-colors',
               linkClassName,
               isActive ? activeClassName : inactiveClassName,
             )}

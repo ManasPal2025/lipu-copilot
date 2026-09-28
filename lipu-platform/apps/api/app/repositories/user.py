@@ -4,6 +4,7 @@ from collections.abc import Sequence
 from uuid import UUID
 
 from sqlalchemy import select
+from sqlalchemy.orm import selectinload
 
 from app.models.user import User
 from app.repositories.base import BaseRepository
@@ -17,7 +18,11 @@ class UserRepository(BaseRepository[User]):
         return result.scalar_one_or_none()
 
     async def get_by_clerk_id(self, clerk_id: str) -> User | None:
-        result = await self.session.execute(select(User).where(User.clerk_id == clerk_id, User.deleted_at.is_(None)))
+        result = await self.session.execute(
+            select(User)
+            .options(selectinload(User.user_profile))
+            .where(User.clerk_id == clerk_id, User.deleted_at.is_(None))
+        )
         return result.scalar_one_or_none()
 
     async def get_by_email(self, email: str) -> User | None:

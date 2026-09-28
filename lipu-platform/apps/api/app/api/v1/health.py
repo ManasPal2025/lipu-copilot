@@ -3,7 +3,7 @@
 from datetime import UTC, datetime
 from typing import Literal
 
-from fastapi import APIRouter, status
+from fastapi import APIRouter, Response, status
 from pydantic import BaseModel
 
 from app.core.config import get_settings
@@ -39,7 +39,13 @@ async def liveness() -> HealthResponse:
 
 
 @router.get("/ready", response_model=HealthResponse, status_code=status.HTTP_200_OK)
-async def readiness() -> HealthResponse:
+async def readiness(response: Response) -> HealthResponse:
+    """Report whether required traffic dependencies are available.
+
+    PostgreSQL is required. Redis is reported for visibility and does not
+    change readiness, because no current request path uses it.
+    """
+
     settings = get_settings()
     dependencies: dict[str, ServiceStatus] = {}
 
@@ -55,9 +61,11 @@ async def readiness() -> HealthResponse:
     except Exception:
         dependencies["redis"] = "degraded"
 
-    overall: ServiceStatus = "ok" if all(value == "ok" for value in dependencies.values()) else "degraded"
+    ready = dependencies["postgres"] == "ok"
+    if not ready:
+        response.status_code = status.HTTP_503_SERVICE_UNAVAILABLE
     return HealthResponse(
-        status=overall,
+        status="ok" if ready else "degraded",
         service=settings.app_name,
         version=settings.app_version,
         environment=settings.app_env,

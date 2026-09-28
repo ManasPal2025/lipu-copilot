@@ -142,6 +142,73 @@ export const images = {
     skylineDetail: local('products/skyline-detail.jpg', 'Fixed picture window sightline and glass edge detail'),
   },
 
+  ecotechProducts: {
+    hero: local(
+      'products/ecotech/product-hero-01.png',
+      'Living space with large-format glazing opening to landscape',
+    ),
+    slidingWindow: local(
+      'products/ecotech/product-sliding-window-01.png',
+      'Sliding window in a residential interior',
+    ),
+    casementWindow: local(
+      'products/ecotech/product-casement-window-01.png',
+      'Casement window opening toward a garden view',
+    ),
+    fixedWindow: local(
+      'products/ecotech/product-fixed-window-01.png',
+      'Fixed picture window with panoramic outlook',
+    ),
+    tiltTurn: local(
+      'products/ecotech/product-tilt-turn-01.png',
+      'Tilt and turn window in a bedroom setting',
+    ),
+    combinationWindow: local(
+      'products/ecotech/product-combination-window-01.png',
+      'Combination window with mixed fixed and operable panels',
+    ),
+    slidingDoor: local(
+      'products/ecotech/product-sliding-door-01.png',
+      'Sliding door connecting a living room to outdoor space',
+    ),
+    frenchDoor: local(
+      'products/ecotech/product-french-door-01.png',
+      'French doors opening toward a terrace',
+    ),
+    casementDoor: local(
+      'products/ecotech/product-casement-door-01.png',
+      'Casement door in a residential opening',
+    ),
+    bifoldDoor: local(
+      'products/ecotech/product-bifold-door-01.png',
+      'Bifold doors opening toward a garden',
+    ),
+    largeFormat: local(
+      'products/ecotech/product-lift-slide-01.png',
+      'Large-format glazed opening in a modern residence',
+    ),
+    cornerGlazing: local(
+      'products/ecotech/product-corner-glazing-01.png',
+      'Corner glazing integrated into a contemporary villa',
+    ),
+    balconySystem: local(
+      'products/ecotech/product-balcony-system-01.png',
+      'Balcony glazing system enclosing an outdoor space',
+    ),
+    partition: local(
+      'products/ecotech/product-partition-system-01.png',
+      'Interior glass partition in a contemporary space',
+    ),
+    customOpening: local(
+      'products/ecotech/product-custom-opening-01.png',
+      'Custom architectural opening in a modern home',
+    ),
+    hardwareDetail: local(
+      'products/ecotech/product-hardware-detail-01.png',
+      'Window hardware detail',
+    ),
+  },
+
   gallery: {
     morningLight: local(
       'gallery/morning-light.jpg',
@@ -226,6 +293,164 @@ export const images = {
     gallery: local('page-heroes/gallery.jpg', 'Real Indian living room inspiration with natural light through UPVC windows'),
     about: local('page-heroes/about.jpg', 'Craftsmanship and design studio atmosphere'),
     contact: local('page-heroes/contact.jpg', 'Inviting Indian home — begin your transformation in Odisha'),
+  },
+
+  ecotechInspiration: {
+    hero: local(
+      'inspiration/ecotech/inspiration-living-01.png',
+      'Living space opening through large glazing toward the landscape',
+    ),
+    living1: local('inspiration/ecotech/inspiration-living-01.png', 'Light across a living space'),
+    living2: local('inspiration/ecotech/inspiration-living-02.png', 'Living space with a glazed garden outlook'),
+    living3: local('inspiration/ecotech/inspiration-living-03.png', 'Open living room with garden outlook'),
+    living4: local('inspiration/ecotech/inspiration-living-04.png', 'Living interior framed by glass'),
+    bedroom1: local('inspiration/ecotech/inspiration-bedroom-01.png', 'Calm, light-filled bedroom'),
+    bedroom2: local('inspiration/ecotech/inspiration-bedroom-02.png', 'Private bedroom with a quiet view'),
+    bedroom3: local('inspiration/ecotech/inspiration-bedroom-03.png', 'Bedroom opening toward morning light'),
+    balcony1: local('inspiration/ecotech/inspiration-balcony-01.png', 'Balcony as an extension of the room'),
+    balcony2: local('inspiration/ecotech/inspiration-balcony-02.png', 'Compact balcony, made usable'),
+    balcony3: local('inspiration/ecotech/inspiration-balcony-03.png', 'Framing the view from a balcony'),
+    balcony4: local('inspiration/ecotech/inspiration-balcony-04.png', 'Balcony lounge in natural light'),
+    terrace1: local('inspiration/ecotech/inspiration-terrace-01.png', 'Terrace living, open to the air'),
+    terrace2: local('inspiration/ecotech/inspiration-terrace-02.png', 'An extension of the terrace'),
+    terrace3: local('inspiration/ecotech/inspiration-terrace-03.png', 'Terrace space at dusk'),
+    terrace4: local('inspiration/ecotech/inspiration-terrace-04.png', 'Indoor–outdoor terrace threshold'),
+    outdoor1: local('inspiration/ecotech/inspiration-outdoor-01.png', 'Outdoor living under open sky'),
+    outdoor2: local('inspiration/ecotech/inspiration-outdoor-02.png', 'Garden and landscape, held by glass'),
+    villa1: local('inspiration/ecotech/inspiration-residential-01.png', 'Villa openings, generous and still'),
+    villa2: local('inspiration/ecotech/inspiration-residential-02.png', 'Residential architecture in evening light'),
+    commercial: local(
+      'inspiration/ecotech/inspiration-commercial-01.png',
+      'Contemporary commercial interior with glazing',
+    ),
+  },
+
+  ecotechGallery: {
+    hero: local(
+      'gallery/ecotech/gallery-apartment-01.png',
+      'Apartment living room with floor-to-ceiling glazing and a city outlook',
+    ),
+    villa: local(
+      'gallery/ecotech/gallery-villa-01.png',
+      'Villa at dusk with large glazed openings reflected in a still pool',
+    ),
+    residential: local(
+      'gallery/ecotech/gallery-residential-01.png',
+      'Residential opening with folding glass doors to the terrace',
+    ),
+    apartment: local(
+      'gallery/ecotech/gallery-apartment-01.png',
+      'Apartment interior with sliding glass and a bright outlook',
+    ),
+    balcony: local(
+      'gallery/ecotech/gallery-balcony-01.png',
+      'Balcony living with glazed enclosure and planted outlook',
+    ),
+    commercial: local(
+      'gallery/ecotech/gallery-commercial-01.png',
+      'Commercial interior with architectural glazing',
+    ),
+    hospitality: local(
+      'gallery/ecotech/gallery-hospitality-01.png',
+      'Hospitality interior shaped by glass and natural light',
+    ),
+  },
+
+  ecotechTransform: {
+    hero: local(
+      'transform/ecotech/transform-sample-living-01.png',
+      'Living space opening through sliding glass to a terrace and landscape',
+    ),
+    living: local(
+      'transform/ecotech/transform-sample-living-01.png',
+      'Living interior with large sliding doors to an outdoor terrace',
+    ),
+    balcony: local(
+      'transform/ecotech/transform-sample-balcony-01.png',
+      'Balcony with glazed openings and a planted outlook',
+    ),
+    apartment: local(
+      'transform/ecotech/transform-sample-apartment-01.png',
+      'Apartment facade with windows, doors, and balcony openings',
+    ),
+    villa: local(
+      'transform/ecotech/transform-sample-villa-01.png',
+      'Villa with architectural windows, doors, and balcony openings',
+    ),
+    villaAlt: local(
+      'transform/ecotech/transform-sample-villa-02.png',
+      'Contemporary villa with glazed balconies and warm timber openings',
+    ),
+  },
+
+  ecotechHome: {
+    hero: local(
+      'home/ecotech/home-hero-01.png',
+      'Architectural living space with floor-to-ceiling glazing',
+    ),
+    living: local('home/ecotech/home-living-01.png', 'Living space with large glazed openings'),
+    bedroom: local('home/ecotech/home-bedroom-01.png', 'Bedroom with refined window light'),
+    balcony: local('home/ecotech/home-balcony-01.png', 'Balcony opening with glazed enclosure'),
+    indoorOutdoor: local(
+      'home/ecotech/home-indoor-outdoor-01.png',
+      'Indoor–outdoor living through wide glazed doors',
+    ),
+    villa: local('home/ecotech/home-villa-exterior-01.png', 'Villa exterior with architectural openings'),
+    productDetail: local(
+      'home/ecotech/home-product-detail-01.png',
+      'Close view of a window or door system in a home',
+    ),
+    transformBefore: local(
+      'home/ecotech/home-transform-before-01.png',
+      'Home facade before window and door upgrade',
+    ),
+    transformAfter: local(
+      'home/ecotech/home-transform-after-01.png',
+      'The same home facade after Ecotech openings',
+    ),
+    cta: local('home/ecotech/home-cta-01.png', 'Architectural interior for consultation'),
+  },
+
+  ecotechServices: {
+    hero: local(
+      'services/ecotech/services-hero-01.png',
+      'Architectural residence with expansive glazing',
+    ),
+    windowsDoors: local(
+      'services/ecotech/services-windows-doors-01.png',
+      'Windows and doors as the foundation of a space',
+    ),
+    balcony: local('services/ecotech/services-balcony-01.png', 'Balcony transformation with glazing'),
+    terrace: local('services/ecotech/services-terrace-01.png', 'Terrace environment with glazed openings'),
+    sunroom: local('services/ecotech/services-sunroom-01.png', 'Sunroom with expansive glass walls'),
+    gardenRoom: local('services/ecotech/services-garden-room-01.png', 'Garden room opening to planted space'),
+    gazebo: local('services/ecotech/services-gazebo-01.png', 'Gazebo with refined framing'),
+    outdoorLiving: local(
+      'services/ecotech/services-outdoor-living-01.png',
+      'Outdoor living defined by large openings',
+    ),
+    poolside: local('services/ecotech/services-poolside-01.png', 'Poolside space with architectural glazing'),
+    commercialOffice: local(
+      'services/ecotech/services-commercial-office-01.png',
+      'Commercial office interior with contemporary glazing',
+    ),
+    salon: local('services/ecotech/services-salon-01.png', 'Salon interior with glass and light'),
+    cafeRestaurant: local(
+      'services/ecotech/services-cafe-restaurant-01.png',
+      'Café or restaurant interior with large openings',
+    ),
+    hospitality: local(
+      'services/ecotech/services-hospitality-01.png',
+      'Hospitality environment with architectural glazing',
+    ),
+  },
+
+  ecotechContact: {
+    hero: local('contact/ecotech/contact-hero-01.png', 'Architectural interior introducing Ecotech contact'),
+    consultation: local(
+      'contact/ecotech/contact-consultation-01.png',
+      'Consultation setting with contemporary openings',
+    ),
   },
 } as const;
 

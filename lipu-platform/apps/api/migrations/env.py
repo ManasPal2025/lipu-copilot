@@ -51,6 +51,20 @@ def run_migrations_offline() -> None:
 
 
 def do_run_migrations(connection: Connection) -> None:
+    # Alembic's default version_num column is varchar(32). Revision
+    # 0001_create_organizations_and_users is longer than that.
+    connection.exec_driver_sql(
+        """
+        CREATE TABLE IF NOT EXISTS alembic_version (
+            version_num VARCHAR(64) NOT NULL PRIMARY KEY
+        )
+        """
+    )
+    connection.exec_driver_sql(
+        "ALTER TABLE alembic_version ALTER COLUMN version_num TYPE VARCHAR(64)"
+    )
+    connection.commit()
+
     context.configure(
         connection=connection,
         target_metadata=target_metadata,

@@ -11,6 +11,7 @@ from app.api.v1.router import api_router
 from app.core.config import Settings, get_settings
 from app.core.exceptions import register_exception_handlers
 from app.core.logging import configure_logging, get_logger
+from app.core.production import production_blockers
 from app.db.redis import close_redis_connection
 from app.db.session import close_database_connections
 from app.middleware.request_context import RequestContextMiddleware
@@ -23,6 +24,18 @@ logger = get_logger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     settings = get_settings()
+    blockers = production_blockers(settings)
+    if settings.is_production and blockers:
+        logger.error("Production configuration is incomplete", extra={"problems": blockers})
+        raise RuntimeError("Production configuration is incomplete.")
+    if (
+        settings.storage_enabled
+        and settings.storage_access_key
+        and settings.storage_access_key == settings.storage_secret_key
+    ):
+        logger.warning(
+            "Storage access key and secret are identical. Use distinct credentials outside local development."
+        )
     logger.info("Starting application", extra={"service": settings.app_name, "version": settings.app_version})
     yield
     logger.info("Shutting down application")

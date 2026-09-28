@@ -23,7 +23,7 @@ export function PageHero({
 }: PageHeroProps) {
   if (image) {
     return (
-      <section className="relative min-h-[55vh] overflow-hidden border-b border-stone-800 lg:min-h-[62vh]" aria-label={title}>
+      <section className="relative min-h-[48vh] overflow-hidden border-b border-stone-800 lg:min-h-[54vh]" aria-label={title}>
         <ParallaxImage
           src={image.src}
           alt={image.alt}
@@ -32,20 +32,20 @@ export function PageHero({
         />
         <div className="absolute inset-0 bg-stone-925/30" />
 
-        <div className="relative flex min-h-[55vh] flex-col justify-end px-5 pb-16 pt-32 sm:px-6 lg:min-h-[62vh] lg:px-8 lg:pb-20">
+        <div className="relative flex min-h-[48vh] flex-col justify-end px-5 pb-12 pt-28 sm:px-6 lg:min-h-[54vh] lg:px-8 lg:pb-14">
           <Container>
             <FadeIn>
               <div className={cn('max-w-3xl', align === 'center' && 'mx-auto text-center')}>
                 {eyebrow && (
-                  <p className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-stone-300">
+                  <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.22em] text-stone-300">
                     {eyebrow}
                   </p>
                 )}
-                <h1 className="font-display text-4xl leading-[1.05] text-stone-50 sm:text-5xl lg:text-6xl">
+                <h1 className="font-display text-[2.25rem] leading-[1.05] text-stone-50 sm:text-4xl lg:text-[3.25rem]">
                   {title}
                 </h1>
                 {description && (
-                  <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone-300 sm:text-lg editorial-prose">
+                  <p className="mt-4 max-w-2xl text-sm leading-relaxed text-stone-300 sm:text-[15px]">
                     {description}
                   </p>
                 )}
@@ -79,7 +79,7 @@ export function PageHero({
             )}
             <h1
               className={cn(
-                'font-display text-4xl leading-[1.05] sm:text-5xl lg:text-6xl',
+                'font-display text-[2.25rem] leading-[1.05] sm:text-4xl lg:text-[3.25rem]',
                 dark ? 'text-stone-50' : '',
               )}
             >

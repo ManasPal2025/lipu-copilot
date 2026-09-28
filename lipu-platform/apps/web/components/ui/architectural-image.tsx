@@ -1,7 +1,20 @@
 import Image from 'next/image';
 
-import { aspectClasses, type AspectRatio } from '@/lib/images';
+import type { AspectRatio } from '@/lib/images';
 import { cn } from '@/lib/utils';
+
+/**
+ * Full class strings must live in this file.
+ * Tailwind only scans app/ and components/, so the map in lib/images.ts is purged.
+ */
+const aspectClasses: Record<AspectRatio, string> = {
+  video: 'aspect-video',
+  square: 'aspect-square',
+  portrait: 'aspect-[3/4]',
+  wide: 'aspect-[21/9]',
+  hero: 'aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]',
+  auto: '',
+};
 
 interface ArchitecturalImageProps {
   src: string;

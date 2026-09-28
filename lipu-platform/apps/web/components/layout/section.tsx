@@ -34,7 +34,7 @@ export function Section({ children, className, id, dark = false }: SectionProps)
     <section
       id={id}
       className={cn(
-        'py-20 sm:py-24 lg:py-32',
+        'py-14 sm:py-16 lg:py-20',
         dark && 'bg-stone-925 text-stone-50',
         className,
       )}
@@ -55,11 +55,11 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ eyebrow, title, description, align = 'left', light = false, className }: SectionHeaderProps) {
   return (
-    <div className={cn('mb-12 max-w-3xl', align === 'center' && 'mx-auto text-center', className)}>
+    <div className={cn('mb-8 max-w-3xl', align === 'center' && 'mx-auto text-center', className)}>
       {eyebrow && (
         <p
           className={cn(
-            'mb-4 text-xs font-medium uppercase tracking-[0.2em]',
+            'mb-2.5 text-[11px] font-medium uppercase tracking-[0.18em]',
             light ? 'text-stone-400' : 'text-muted-foreground',
           )}
         >
@@ -68,7 +68,7 @@ export function SectionHeader({ eyebrow, title, description, align = 'left', lig
       )}
       <h2
         className={cn(
-          'font-display text-3xl leading-[1.1] sm:text-4xl lg:text-[3.25rem] lg:leading-[1.08]',
+          'font-display text-[1.75rem] leading-[1.12] sm:text-[2rem] lg:text-[2.5rem] lg:leading-[1.08]',
           light ? 'text-stone-50' : 'text-foreground',
         )}
       >
@@ -77,7 +77,7 @@ export function SectionHeader({ eyebrow, title, description, align = 'left', lig
       {description && (
         <p
           className={cn(
-            'mt-4 text-base leading-relaxed sm:text-lg',
+            'mt-3 text-sm leading-relaxed sm:text-[15px]',
             light ? 'text-stone-400' : 'text-muted-foreground',
           )}
         >

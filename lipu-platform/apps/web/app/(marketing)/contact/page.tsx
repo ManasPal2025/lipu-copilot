@@ -24,18 +24,18 @@ export default function ContactPage() {
         title="Begin your transformation"
         description="Share your vision. We respond within one business day with a thoughtful next step — never a hard sell."
         align="center"
-        image={images.pageHero.contact}
+        image={images.ecotechContact.hero}
       />
 
       <Section>
         <Container>
-          <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <FadeIn className="lg:col-span-5">
               <div className="space-y-12">
                 <ImageZoom className="hidden lg:block">
                   <ArchitecturalImage
-                    src={images.contact.src}
-                    alt={images.contact.alt}
+                    src={images.ecotechContact.consultation.src}
+                    alt={images.ecotechContact.consultation.alt}
                     aspect="portrait"
                     sizes="40vw"
                   />

@@ -10,6 +10,13 @@ from app.core.config import Settings, get_settings
 
 settings = get_settings()
 
+
+def _connect_args(selected: Settings) -> dict[str, object]:
+    if not selected.database_ssl:
+        return {}
+    return {"ssl": True}
+
+
 engine: AsyncEngine = create_async_engine(
     str(settings.database_url),
     echo=settings.database_echo,
@@ -18,6 +25,7 @@ engine: AsyncEngine = create_async_engine(
     pool_timeout=settings.database_pool_timeout,
     pool_recycle=settings.database_pool_recycle,
     pool_pre_ping=True,
+    connect_args=_connect_args(settings),
 )
 
 AsyncSessionLocal = async_sessionmaker(
@@ -64,5 +72,6 @@ def make_engine(database_url: str | None = None, config: Settings | None = None)
         database_url or str(selected_settings.database_url),
         echo=selected_settings.database_echo,
         pool_pre_ping=True,
+        connect_args=_connect_args(selected_settings),
     )
 

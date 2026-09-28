@@ -53,10 +53,55 @@ class ConflictError(AppError):
     message = "The request conflicts with the current resource state."
 
 
+class UnauthorizedError(AppError):
+    status_code = status.HTTP_401_UNAUTHORIZED
+    code = "unauthorized"
+    message = "Authentication is required."
+
+
+class ForbiddenError(AppError):
+    status_code = status.HTTP_403_FORBIDDEN
+    code = "forbidden"
+    message = "You do not have access to this resource."
+
+
 class ExternalServiceError(AppError):
     status_code = status.HTTP_503_SERVICE_UNAVAILABLE
     code = "external_service_unavailable"
     message = "An upstream service is unavailable."
+
+
+class PayloadTooLargeError(AppError):
+    status_code = status.HTTP_413_REQUEST_ENTITY_TOO_LARGE
+    code = "payload_too_large"
+    message = "The image is too large."
+
+
+class UnprocessableError(AppError):
+    status_code = status.HTTP_422_UNPROCESSABLE_ENTITY
+    code = "validation_error"
+    message = "The image could not be accepted."
+
+
+class GenerationError(AppError):
+    status_code = status.HTTP_503_SERVICE_UNAVAILABLE
+    code = "generation_unavailable"
+    message = "We couldn't complete this transformation."
+
+    def __init__(
+        self,
+        message: str | None = None,
+        *,
+        category: str = "provider",
+    ) -> None:
+        self.category = category
+        super().__init__(message)
+
+
+class StorageError(AppError):
+    status_code = status.HTTP_503_SERVICE_UNAVAILABLE
+    code = "storage_unavailable"
+    message = "The image could not be stored."
 
 
 def error_payload(request: Request, code: str, message: str, details: Any | None = None) -> dict[str, Any]:
@@ -89,10 +134,40 @@ async def http_error_handler(request: Request, exc: StarletteHTTPException) -> J
     )
 
 
+def _json_safe(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {str(key): _json_safe(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_json_safe(item) for item in value]
+    if isinstance(value, (str, int, float, bool)) or value is None:
+        return value
+    return str(value)
+
+
+def _public_validation_errors(errors: list[object]) -> list[dict[str, Any]]:
+    published: list[dict[str, Any]] = []
+    for error in errors:
+        if not isinstance(error, dict):
+            continue
+        published.append(
+            {
+                "loc": _json_safe(error.get("loc")),
+                "msg": _json_safe(error.get("msg")),
+                "type": _json_safe(error.get("type")),
+            }
+        )
+    return published
+
+
 async def validation_error_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-        content=error_payload(request, "validation_error", "Request validation failed.", exc.errors()),
+        content=error_payload(
+            request,
+            "validation_error",
+            "Request validation failed.",
+            _public_validation_errors(exc.errors()),
+        ),
     )
 
 
